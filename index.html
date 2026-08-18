@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="潮汐栈（TideStack）是 AI 时代的企业开发供应链：以模型为标准件，以 AI 为生产力，贯通企业开发的每一个环节。高代码 × 低代码 × AI 融合开发，核心组件全面开源。">
+  <meta name="description" content="潮汐栈（TideStack）是 AI 时代的企业开发供应链：以模型为标准件，以 AI 为驱动力，贯通企业开发的每一个环节。高代码 × 低代码 × AI 融合开发，核心组件全面开源。">
   <title>潮汐栈 TideStack — AI 时代的企业开发供应链</title>
   <link rel="icon" href="assets/tidestack-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
@@ -42,7 +42,7 @@
     <section id="hero" class="ouro-page-section" style="background: linear-gradient(180deg, var(--ouro-background) 0%, rgba(0, 210, 233, 0.06) 100%); overflow: hidden;">
       <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(circle at 70% 40%, rgba(0, 210, 233, 0.10) 0%, transparent 45%), radial-gradient(circle at 25% 75%, rgba(0, 87, 228, 0.06) 0%, transparent 40%);"></div>
 
-      <svg class="ouro-wave ouro-wave-bottom" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <svg class="ouro-wave ouro-boundary-wave ouro-wave-bottom" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
         <path d="M0,40 C240,100 480,0 720,40 C960,80 1200,20 1440,60 L1440,120 L0,120 Z" style="fill: var(--ouro-surface);"></path>
       </svg>
 
@@ -51,7 +51,7 @@
           <img src="assets/tidestack-logo.svg" alt="潮汐栈 TideStack" class="h-28 w-auto md:h-36" style="animation: float 6s ease-in-out infinite;">
         </div>
         <h1 class="ouro-display mb-6" style="color: var(--ouro-ink); text-wrap: balance; word-break: keep-all;">需求进，应用出</h1>
-        <p class="ouro-body-lg max-w-2xl mb-10" style="color: var(--ouro-ink-2);"><span style="color: var(--ouro-ink-2);">潮汐栈是 AI 时代的企业开发供应链：以模型为标准件，以 AI 为生产力，贯通企业开发的每一个环节。</span>软件，进入工业化时代。</p>
+        <p class="ouro-body-lg max-w-2xl mb-10" style="color: var(--ouro-ink-2);"><span style="color: var(--ouro-ink-2);">潮汐栈是 AI 时代的企业开发供应链：以模型为标准件，以 AI 为驱动力，贯通企业开发的每一个环节。</span>软件，进入工业化时代。</p>
         <div class="flex flex-col sm:flex-row items-center gap-4">
           <a href="https://docs.tidestack.dev/docs/getting-started/" class="ouro-btn-primary text-base" data-dom-id="hero-cta-primary">
             快速开始
@@ -92,9 +92,9 @@
           </ul>
         </div>
         <div class="order-1 md:order-2 flex items-center justify-center" style="position: relative;">
-          <svg viewBox="0 0 460 360" class="w-full max-w-md" aria-hidden="true">
+          <svg viewBox="0 0 500 400" class="w-full max-w-lg" aria-hidden="true">
             <defs>
-              <linearGradient id="loopGradient" x1="70" y1="300" x2="390" y2="56" gradientUnits="userSpaceOnUse">
+              <linearGradient id="loopGradient" x1="64" y1="332" x2="436" y2="68" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" style="stop-color: var(--ouro-blue-700); stop-opacity: 0.72"></stop>
                 <stop offset="52%" style="stop-color: var(--ouro-sky-500); stop-opacity: 0.74"></stop>
                 <stop offset="100%" style="stop-color: var(--ouro-cyan-400); stop-opacity: 0.76"></stop>
@@ -103,34 +103,42 @@
                 <stop offset="0%" style="stop-color: var(--ouro-cyan-400); stop-opacity: 0.18"></stop>
                 <stop offset="100%" style="stop-color: var(--ouro-cyan-400); stop-opacity: 0"></stop>
               </radialGradient>
-              <marker id="loopArrow" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto">
-                <path d="M0 0L12 5L0 10Z" style="fill: var(--ouro-cyan-500);"></path>
+              <marker id="loopArrow" markerWidth="18" markerHeight="18" refX="15" refY="9" orient="auto" markerUnits="userSpaceOnUse">
+                <path d="M2 2L16 9L2 16L5.4 9Z" style="fill: var(--ouro-cyan-500);"></path>
               </marker>
             </defs>
-            <circle cx="230" cy="180" r="136" style="fill: url(#loopCoreGlow);"></circle>
-            <path class="ouro-loop-track" d="M230,304 C328,304 404,248 404,180 C404,112 328,56 230,56 C132,56 56,112 56,180 C56,248 132,304 230,304" style="fill: none; stroke: url(#loopGradient); stroke-width: 3; marker-end: url(#loopArrow);"></path>
-            <path d="M230,304 C328,304 404,248 404,180" style="fill: none; stroke: var(--ouro-cyan-400); stroke-width: 7; opacity: 0.08;"></path>
-            <g class="ouro-loop-card" transform="translate(170 22)">
+            <circle cx="250" cy="200" r="154" style="fill: url(#loopCoreGlow);"></circle>
+            <g class="ouro-loop-links" aria-hidden="true">
+              <path class="ouro-loop-link-soft" d="M89,159 C92,104 132,57 178,57"></path>
+              <path class="ouro-loop-link-soft" d="M322,57 C368,57 407,104 409,159"></path>
+              <path class="ouro-loop-link-soft" d="M409,241 C407,296 368,343 322,343"></path>
+              <path class="ouro-loop-link-soft" d="M178,343 C132,343 92,296 89,241"></path>
+              <path class="ouro-loop-link" d="M89,159 C92,104 132,57 178,57" marker-end="url(#loopArrow)"></path>
+              <path class="ouro-loop-link" d="M322,57 C368,57 407,104 409,159" marker-end="url(#loopArrow)"></path>
+              <path class="ouro-loop-link" d="M409,241 C407,296 368,343 322,343" marker-end="url(#loopArrow)"></path>
+              <path class="ouro-loop-link" d="M178,343 C132,343 92,296 89,241" marker-end="url(#loopArrow)"></path>
+            </g>
+            <g class="ouro-loop-card" transform="translate(190 28)">
               <rect width="120" height="58" rx="14" style="fill: var(--ouro-surface); stroke: var(--ouro-primary); stroke-opacity: 0.42;"></rect>
               <text x="60" y="28" text-anchor="middle" style="font-size: 15px; font-weight: 600; fill: var(--ouro-ink);">模型</text>
               <text x="60" y="46" text-anchor="middle" style="font-size: 11px; fill: var(--ouro-ink-2);">标准化表达</text>
             </g>
-            <g class="ouro-loop-card" transform="translate(338 151)">
+            <g class="ouro-loop-card" transform="translate(354 171)">
               <rect width="110" height="58" rx="14" style="fill: var(--ouro-surface); stroke: var(--ouro-line);"></rect>
               <text x="55" y="28" text-anchor="middle" style="font-size: 15px; font-weight: 600; fill: var(--ouro-ink);">应用</text>
               <text x="55" y="46" text-anchor="middle" style="font-size: 11px; fill: var(--ouro-ink-2);">运行时生长</text>
             </g>
-            <g class="ouro-loop-card" transform="translate(170 280)">
+            <g class="ouro-loop-card" transform="translate(190 314)">
               <rect width="120" height="58" rx="14" style="fill: var(--ouro-surface); stroke: var(--ouro-line);"></rect>
               <text x="60" y="28" text-anchor="middle" style="font-size: 15px; font-weight: 600; fill: var(--ouro-ink);">资产</text>
               <text x="60" y="46" text-anchor="middle" style="font-size: 11px; fill: var(--ouro-ink-2);">版本化沉淀</text>
             </g>
-            <g class="ouro-loop-card" transform="translate(12 151)">
+            <g class="ouro-loop-card" transform="translate(34 171)">
               <rect width="110" height="58" rx="14" style="fill: var(--ouro-surface); stroke: var(--ouro-line);"></rect>
               <text x="55" y="28" text-anchor="middle" style="font-size: 15px; font-weight: 600; fill: var(--ouro-ink);">需求</text>
               <text x="55" y="46" text-anchor="middle" style="font-size: 11px; fill: var(--ouro-ink-2);">业务输入</text>
             </g>
-            <g transform="translate(164 132)">
+            <g transform="translate(184 152)">
               <rect width="132" height="96" rx="18" style="fill: #071827; stroke: rgba(0, 210, 233, 0.35);"></rect>
               <text x="66" y="42" text-anchor="middle" style="font-size: 16px; font-weight: 600; fill: var(--ouro-neutral-50);">AI 协同</text>
               <text x="66" y="66" text-anchor="middle" style="font-size: 12px; fill: var(--ouro-neutral-300);">解析 · 建模 · 审查</text>
@@ -141,6 +149,10 @@
     </section>
 
     <section id="philosophy" class="ouro-page-section" style="background: var(--ouro-background);">
+      <svg class="ouro-wave ouro-boundary-wave ouro-wave-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,50 C200,90 400,20 600,50 C800,80 1000,20 1200,50 C1340,70 1400,40 1440,30 L1440,0 L0,0 Z" style="fill: var(--ouro-surface);"></path>
+      </svg>
+
       <div class="ouro-section-inner flex flex-col justify-center h-full py-20">
         <div class="text-center max-w-2xl mx-auto mb-16">
           <h2 class="ouro-h1 mb-6" style="color: var(--ouro-ink); text-wrap: balance; word-break: keep-all;">为 AI 时代而设计的开发哲学</h2>
@@ -174,7 +186,7 @@
     </section>
 
     <section id="principles" class="ouro-page-section" style="background: var(--ouro-surface);">
-      <svg class="ouro-wave ouro-wave-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <svg class="ouro-wave ouro-boundary-wave ouro-wave-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
         <path d="M0,60 C180,20 360,90 540,60 C720,30 900,100 1080,60 C1260,20 1380,80 1440,50 L1440,0 L0,0 Z" style="fill: var(--ouro-background);"></path>
       </svg>
 
@@ -218,76 +230,85 @@
     </section>
 
     <section id="architecture" class="ouro-page-section" style="background: var(--ouro-background);">
-      <div class="ouro-section-inner grid md:grid-cols-2 gap-12 items-center h-full py-20">
-        <div class="flex items-center justify-center" style="position: relative;">
-          <svg viewBox="0 0 440 360" class="w-full max-w-lg" aria-hidden="true">
+      <svg class="ouro-wave ouro-boundary-wave ouro-wave-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,50 C200,90 400,20 600,50 C800,80 1000,20 1200,50 C1340,70 1400,40 1440,30 L1440,0 L0,0 Z" style="fill: var(--ouro-surface);"></path>
+      </svg>
+
+      <div class="ouro-section-inner grid md:grid-cols-2 gap-14 items-center h-full py-20">
+        <div class="ouro-lifecycle-visual flex items-center justify-center" style="position: relative;">
+          <svg viewBox="0 0 500 380" class="w-full max-w-xl" aria-hidden="true">
             <defs>
-              <linearGradient id="archTopGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color: var(--ouro-cyan-400); stop-opacity: 0.20"></stop>
-                <stop offset="100%" style="stop-color: var(--ouro-cyan-400); stop-opacity: 0.08"></stop>
+              <linearGradient id="lifeLineGrad" x1="92" y1="80" x2="420" y2="312" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" style="stop-color: var(--ouro-cyan-400); stop-opacity: 0.82"></stop>
+                <stop offset="48%" style="stop-color: var(--ouro-sky-500); stop-opacity: 0.78"></stop>
+                <stop offset="100%" style="stop-color: var(--ouro-blue-700); stop-opacity: 0.72"></stop>
               </linearGradient>
-              <linearGradient id="archDevGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color: var(--ouro-cyan-500); stop-opacity: 0.24"></stop>
-                <stop offset="100%" style="stop-color: var(--ouro-cyan-600); stop-opacity: 0.10"></stop>
+              <linearGradient id="lifeCardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color: var(--ouro-white); stop-opacity: 1"></stop>
+                <stop offset="100%" style="stop-color: var(--ouro-neutral-50); stop-opacity: 1"></stop>
               </linearGradient>
-              <linearGradient id="archRuntimeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color: var(--ouro-sky-500); stop-opacity: 0.24"></stop>
-                <stop offset="100%" style="stop-color: var(--ouro-blue-600); stop-opacity: 0.10"></stop>
-              </linearGradient>
-              <linearGradient id="archOpsGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color: var(--ouro-blue-700); stop-opacity: 0.24"></stop>
-                <stop offset="100%" style="stop-color: var(--ouro-blue-800); stop-opacity: 0.10"></stop>
-              </linearGradient>
-              <marker id="archArrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
-                <polygon points="0 0, 10 4, 0 8" style="fill: var(--ouro-primary);"></polygon>
+              <radialGradient id="lifeCoreGlow" cx="50%" cy="50%" r="58%">
+                <stop offset="0%" style="stop-color: var(--ouro-cyan-400); stop-opacity: 0.18"></stop>
+                <stop offset="100%" style="stop-color: var(--ouro-cyan-400); stop-opacity: 0"></stop>
+              </radialGradient>
+              <marker id="lifeArrow" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto" markerUnits="userSpaceOnUse">
+                <path d="M2 2L14 8L2 14L5.2 8Z" style="fill: var(--ouro-cyan-500);"></path>
               </marker>
             </defs>
 
-            <rect x="120" y="20" width="200" height="48" rx="12" style="fill: url(#archTopGrad); stroke: var(--ouro-primary); stroke-width: 1.5;"></rect>
-            <text x="220" y="50" text-anchor="middle" style="font-size: 15px; font-weight: 600; fill: var(--ouro-primary);">开发者与 AI</text>
+            <circle cx="250" cy="190" r="132" style="fill: url(#lifeCoreGlow);"></circle>
+            <path class="ouro-life-line-soft" d="M176,88 C284,38 416,82 418,174"></path>
+            <path class="ouro-life-line-soft" d="M414,226 C386,324 242,350 150,282"></path>
+            <path class="ouro-life-line-soft" d="M118,244 C62,172 92,104 146,84"></path>
+            <path class="ouro-life-line" d="M176,88 C284,38 416,82 418,174" marker-end="url(#lifeArrow)"></path>
+            <path class="ouro-life-line" d="M414,226 C386,324 242,350 150,282" marker-end="url(#lifeArrow)"></path>
+            <path class="ouro-life-line" d="M118,244 C62,172 92,104 146,84" marker-end="url(#lifeArrow)"></path>
 
-            <line x1="220" y1="68" x2="220" y2="92" style="stroke: var(--ouro-primary); stroke-width: 2; marker-end: url(#archArrow);"></line>
-
-            <rect x="60" y="94" width="320" height="60" rx="12" style="fill: url(#archDevGrad); stroke: var(--ouro-line); stroke-width: 1;"></rect>
-            <text x="220" y="120" text-anchor="middle" style="font-size: 15px; font-weight: 600; fill: var(--ouro-ink);">开发平台</text>
-            <text x="220" y="140" text-anchor="middle" style="font-size: 12px; fill: var(--ouro-ink-2);">可视化建模 · AI 辅助设计 · 版本治理</text>
-
-            <line x1="220" y1="154" x2="220" y2="178" style="stroke: var(--ouro-primary); stroke-width: 2; marker-end: url(#archArrow);"></line>
-
-            <rect x="60" y="180" width="320" height="60" rx="12" style="fill: url(#archRuntimeGrad); stroke: var(--ouro-line); stroke-width: 1;"></rect>
-            <text x="220" y="206" text-anchor="middle" style="font-size: 15px; font-weight: 600; fill: var(--ouro-ink);">运行时基座</text>
-            <text x="220" y="226" text-anchor="middle" style="font-size: 12px; fill: var(--ouro-ink-2);">解释执行 · 动态渲染 · API 暴露</text>
-
-            <line x1="220" y1="240" x2="220" y2="264" style="stroke: var(--ouro-primary); stroke-width: 2; marker-end: url(#archArrow);"></line>
-
-            <rect x="60" y="266" width="320" height="60" rx="12" style="fill: url(#archOpsGrad); stroke: var(--ouro-line); stroke-width: 1;"></rect>
-            <text x="220" y="292" text-anchor="middle" style="font-size: 15px; font-weight: 600; fill: var(--ouro-ink);">运维平台</text>
-            <text x="220" y="312" text-anchor="middle" style="font-size: 12px; fill: var(--ouro-ink-2);">监控 · 治理 · 持续运营</text>
+            <g class="ouro-life-card" transform="translate(84 44)">
+              <rect width="152" height="72" rx="16" style="fill: url(#lifeCardGrad); stroke: var(--ouro-primary); stroke-opacity: 0.42;"></rect>
+              <text x="76" y="31" text-anchor="middle" style="font-size: 15px; font-weight: 600; fill: var(--ouro-ink);">设计建模</text>
+              <text x="76" y="52" text-anchor="middle" style="font-size: 12px; fill: var(--ouro-ink-2);">开发平台</text>
+            </g>
+            <g class="ouro-life-card" transform="translate(338 154)">
+              <rect width="132" height="72" rx="16" style="fill: url(#lifeCardGrad); stroke: var(--ouro-line);"></rect>
+              <text x="66" y="31" text-anchor="middle" style="font-size: 15px; font-weight: 600; fill: var(--ouro-ink);">运行交付</text>
+              <text x="66" y="52" text-anchor="middle" style="font-size: 12px; fill: var(--ouro-ink-2);">运行时基座</text>
+            </g>
+            <g class="ouro-life-card" transform="translate(84 250)">
+              <rect width="152" height="72" rx="16" style="fill: url(#lifeCardGrad); stroke: var(--ouro-line);"></rect>
+              <text x="76" y="31" text-anchor="middle" style="font-size: 15px; font-weight: 600; fill: var(--ouro-ink);">观测治理</text>
+              <text x="76" y="52" text-anchor="middle" style="font-size: 12px; fill: var(--ouro-ink-2);">运维平台</text>
+            </g>
+            <g transform="translate(176 152)">
+              <rect width="148" height="76" rx="18" style="fill: #071827; stroke: rgba(0, 210, 233, 0.36);"></rect>
+              <text x="74" y="33" text-anchor="middle" style="font-size: 16px; font-weight: 600; fill: var(--ouro-neutral-50);">模型资产</text>
+              <text x="74" y="55" text-anchor="middle" style="font-size: 12px; fill: var(--ouro-neutral-300);">贯穿 · 版本 · 反馈</text>
+            </g>
           </svg>
         </div>
-        <div>
-          <h2 class="ouro-h1 mb-6" style="color: var(--ouro-ink); text-wrap: balance; word-break: keep-all;"><p data-pm-slice="1 1 [&quot;blockquote&quot;,null]">为软件全生命周期而生</p></h2>
-          <p class="ouro-body-lg mb-8" style="color: var(--ouro-ink-2);"><p data-pm-slice="1 1 [&quot;blockquote&quot;,null]">从设计到运行到治理，潮汐栈以三层产品形态覆盖软件生命周期的完整旅程。今天交付前两段，第三段已在路上。</p></p>
-          <div class="space-y-5">
+        <div class="ouro-lifecycle-copy">
+          <h2 class="ouro-h1" style="color: var(--ouro-ink); text-wrap: balance; word-break: keep-all;">为软件全生命周期而生</h2>
+          <p class="ouro-body-lg" style="color: var(--ouro-ink-2);">从设计到运行到治理，潮汐栈以三层产品形态覆盖软件生命周期的完整旅程。</p>
+          <div class="ouro-lifecycle-list">
             <div class="flex items-start gap-4 p-4 rounded-xl" style="background: var(--ouro-surface); border: 1px solid var(--ouro-line);">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="monitor" aria-hidden="true" class="lucide lucide-monitor w-5 h-5 mt-0.5" style="color: var(--ouro-primary);"><rect width="20" height="14" x="2" y="3" rx="2"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg>
               <div>
                 <h3 class="ouro-h3 mb-1" style="color: var(--ouro-ink);">开发平台</h3>
-                <p class="ouro-body" style="color: var(--ouro-ink-2);"><p data-pm-slice="1 1 [&quot;blockquote&quot;,null]">可视化建模、AI 辅助设计、元数据管理与版本治理，是应用的设计中心。</p></p>
+                <p class="ouro-body" style="color: var(--ouro-ink-2);">可视化建模、AI 辅助设计、元数据管理与版本治理，是应用的设计中心。</p>
               </div>
             </div>
             <div class="flex items-start gap-4 p-4 rounded-xl" style="background: var(--ouro-surface); border: 1px solid var(--ouro-line);">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="database" aria-hidden="true" class="lucide lucide-database w-5 h-5 mt-0.5" style="color: var(--ouro-primary);"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>
               <div>
                 <h3 class="ouro-h3 mb-1" style="color: var(--ouro-ink);">运行时基座</h3>
-                <p class="ouro-body" style="color: var(--ouro-ink-2);"><p data-pm-slice="1 1 [&quot;blockquote&quot;,null]">加载元数据、解释执行、动态渲染、暴露 API，让设计即刻成为生产。</p></p>
+                <p class="ouro-body" style="color: var(--ouro-ink-2);">加载元数据、解释执行、动态渲染、暴露 API，让设计即刻成为生产。</p>
               </div>
             </div>
             <div class="flex items-start gap-4 p-4 rounded-xl" style="background: var(--ouro-surface); border: 1px solid var(--ouro-line);">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="server" aria-hidden="true" class="lucide lucide-server w-5 h-5 mt-0.5" style="color: var(--ouro-primary);"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect><rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect><line x1="6" x2="6.01" y1="6" y2="6"></line><line x1="6" x2="6.01" y1="18" y2="18"></line></svg>
               <div>
                 <h3 class="ouro-h3 mb-1" style="color: var(--ouro-ink);">运维平台（Coming Soon）</h3>
-                <p class="ouro-body" style="color: var(--ouro-ink-2);"><p data-pm-slice="1 1 [&quot;blockquote&quot;,null]">部署、发布、观测与运行治理，闭环软件生命周期的最后一段。</p></p>
+                <p class="ouro-body" style="color: var(--ouro-ink-2);">部署、发布、观测与运行治理，闭环软件生命周期的最后一段。</p>
               </div>
             </div>
           </div>
@@ -296,7 +317,7 @@
     </section>
 
     <section id="fusion" class="ouro-page-section" style="background: var(--ouro-surface);">
-      <svg class="ouro-wave ouro-wave-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <svg class="ouro-wave ouro-boundary-wave ouro-wave-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
         <path d="M0,60 C180,20 360,90 540,60 C720,30 900,100 1080,60 C1260,20 1380,80 1440,50 L1440,0 L0,0 Z" style="fill: var(--ouro-background);"></path>
       </svg>
 
@@ -316,7 +337,7 @@
           </div>
           <div class="ouro-philosophy-panel rounded-2xl p-8" style="background: var(--ouro-background); border: 1px solid var(--ouro-line); border-radius: 24px;">
             <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-6" style="background: rgba(0, 210, 233, 0.10);">
-              <i data-lucide="tool" class="w-6 h-6" style="color: var(--ouro-primary);"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="workflow" aria-hidden="true" class="lucide lucide-workflow w-6 h-6" style="color: var(--ouro-primary);"><rect width="8" height="8" x="3" y="3" rx="2"></rect><path d="M7 11v4a2 2 0 0 0 2 2h4"></path><rect width="8" height="8" x="13" y="13" rx="2"></rect></svg>
             </div>
             <h3 class="ouro-h3 mb-3" style="color: var(--ouro-ink);">工具链融合</h3>
             <p class="ouro-body" style="color: var(--ouro-ink-2);">Maven 插件、IDE 插件、本地平台联合调试——建模、编码、调试在同一条工作流里完成。低代码开发者与高代码开发者共用一套工具、一个节奏，谁也不用在两套世界里来回切换。</p>
@@ -333,7 +354,7 @@
     </section>
 
     <section id="capabilities" class="ouro-page-section" style="background: var(--ouro-background);">
-      <svg class="ouro-wave ouro-wave-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <svg class="ouro-wave ouro-boundary-wave ouro-wave-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
         <path d="M0,50 C200,90 400,20 600,50 C800,80 1000,20 1200,50 C1340,70 1400,40 1440,30 L1440,0 L0,0 Z" style="fill: var(--ouro-surface);"></path>
       </svg>
 
@@ -391,14 +412,14 @@
     </section>
 
     <section id="opensource" class="ouro-page-section" style="background: var(--ouro-surface);">
-      <svg class="ouro-wave ouro-wave-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <svg class="ouro-wave ouro-boundary-wave ouro-wave-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
         <path d="M0,50 C200,90 400,20 600,50 C800,80 1000,20 1200,50 C1340,70 1400,40 1440,30 L1440,0 L0,0 Z" style="fill: var(--ouro-background);"></path>
       </svg>
 
       <div class="ouro-section-inner flex flex-col justify-center h-full py-20">
         <div class="text-center max-w-2xl mx-auto mb-16">
           <h2 class="ouro-h1 mb-6" style="color: var(--ouro-ink); text-wrap: balance; word-break: keep-all;">开放，从开源开始</h2>
-          <p class="ouro-body-lg" style="color: var(--ouro-ink-2);">开放性不是姿态，是交付物。潮汐栈的核心组件已经逐一开源——你可以只取其中一环接入现有体系，而不必采用整个平台。</p>
+          <p class="ouro-body-lg" style="color: var(--ouro-ink-2);">潮汐栈的核心组件已逐一开源。你可以按需选择其中一个组件接入现有体系，而不必完整采用整个平台。</p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
@@ -449,11 +470,11 @@
     </section>
 
     <section id="cta" class="ouro-page-section" style="padding: 0; background: linear-gradient(180deg, var(--ouro-surface) 0%, rgba(0, 210, 233, 0.06) 100%);">
-      <div class="ouro-section-inner flex flex-col items-center justify-center text-center py-20">
-        <img src="assets/tidestack-logo.svg" alt="潮汐栈 TideStack" class="h-16 w-auto mb-8" style="filter: drop-shadow(0 12px 24px rgba(0, 210, 233, 0.16));">
-        <h2 class="ouro-h1 mb-6" style="color: var(--ouro-ink); text-wrap: balance; word-break: keep-all;"><p data-pm-slice="1 1 [&quot;table&quot;,null,&quot;table_row&quot;,null,&quot;table_cell&quot;,{&quot;colspan&quot;:1,&quot;rowspan&quot;:1,&quot;colwidth&quot;:null,&quot;alignment&quot;:null}]">潮水已至，上栈启航</p></h2>
-        <p class="ouro-body-lg max-w-xl mb-10" style="color: var(--ouro-ink-2);"><p data-pm-slice="1 1 [&quot;blockquote&quot;,null]">从第一个模型开始，体验模型驱动的开发方式；从第一个应用开始，沉淀属于你们的数字资产。</p></p>
-        <div class="flex flex-col sm:flex-row items-center gap-4">
+      <div class="ouro-section-inner ouro-cta-inner flex flex-col items-center justify-center text-center py-20">
+        <img src="assets/tidestack-logo.svg" alt="潮汐栈 TideStack" class="ouro-cta-icon h-16 w-auto" style="filter: drop-shadow(0 12px 24px rgba(0, 210, 233, 0.16));">
+        <h2 class="ouro-cta-title ouro-h1" style="color: var(--ouro-ink); text-wrap: balance; word-break: keep-all;">潮水已至，上栈启航</h2>
+        <p class="ouro-cta-subtitle ouro-body-lg max-w-xl" style="color: var(--ouro-ink-2);">从第一个模型开始，体验模型驱动的开发方式；从第一个应用开始，沉淀属于你们的数字资产。</p>
+        <div class="ouro-cta-actions flex flex-col sm:flex-row items-center gap-4">
           <a href="https://docs.tidestack.dev/docs/getting-started/" class="ouro-btn-primary text-base" data-dom-id="footer-cta-primary">
             快速开始
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-4 h-4"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
@@ -466,10 +487,10 @@
       </div>
 
       <footer class="relative z-10 w-full mt-auto" style="background: var(--ouro-ink); color: var(--ouro-neutral-50);">
-        <svg class="ouro-wave ouro-wave-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="height: 80px; transform: translateY(-79px);">
+        <svg class="ouro-wave ouro-footer-wave ouro-wave-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
           <path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z" style="fill: var(--ouro-ink);"></path>
         </svg>
-        <div class="ouro-container py-16" style="margin-top: -80px;">
+        <div class="ouro-container ouro-footer-content py-16">
           <div class="grid md:grid-cols-4 gap-10 mb-12" style="margin-top: 16px;">
             <div>
               <div class="flex items-center gap-2 mb-4">

@@ -108,6 +108,7 @@ html {
   font-family: var(--ouro-font-sans);
   color: var(--ouro-ink);
   background: var(--ouro-background);
+  overflow-x: hidden;
   scroll-behavior: smooth;
   scroll-padding-top: var(--ouro-hero-top, 72px);
   scroll-snap-type: y mandatory;
@@ -116,6 +117,7 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 .ouro-display {
@@ -172,6 +174,10 @@ body {
   position: relative;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+}
+
+.ouro-page-section + .ouro-page-section {
+  margin-top: -1px;
 }
 
 .ouro-btn-primary {
@@ -1449,7 +1455,19 @@ body {
       transform-box: fill-box;
       transform-origin: center;
       transform: translate3d(var(--ouro-wave-x), var(--ouro-wave-y), 0) scaleX(1.04);
-      transition: transform 80ms linear;
+      transition: none;
+      will-change: transform;
+    }
+
+    .ouro-boundary-wave {
+      left: -2vw;
+      right: auto;
+      width: 104vw;
+      height: 132px;
+    }
+
+    .ouro-boundary-wave path {
+      transform: translate3d(var(--ouro-wave-x), var(--ouro-wave-y), 0) scale(1.08, 1.16);
     }
 
     .ouro-wave-top {
@@ -1460,6 +1478,30 @@ body {
     .ouro-wave-bottom {
       bottom: 0;
       transform: translateY(1px);
+    }
+
+    .ouro-boundary-wave.ouro-wave-top {
+      top: -14px;
+      transform: none;
+    }
+
+    .ouro-boundary-wave.ouro-wave-bottom {
+      bottom: -14px;
+      transform: none;
+    }
+
+    .ouro-footer-wave {
+      height: 88px;
+      transform: translateY(-80px);
+    }
+
+    .ouro-footer-wave path {
+      transform: scale(1.04, 1.08);
+    }
+
+    .ouro-footer-content {
+      position: relative;
+      z-index: 1;
     }
 
     .ouro-section-inner {
@@ -1494,8 +1536,112 @@ body {
       filter: drop-shadow(0 12px 24px rgba(0, 210, 233, 0.10));
     }
 
+    .ouro-loop-link-soft,
+    .ouro-loop-link {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .ouro-loop-link-soft {
+      stroke: var(--ouro-cyan-400);
+      stroke-width: 14;
+      opacity: 0.08;
+    }
+
+    .ouro-loop-link {
+      stroke: url(#loopGradient);
+      stroke-width: 5.5;
+      filter: drop-shadow(0 8px 18px rgba(0, 210, 233, 0.16));
+    }
+
     .ouro-loop-card rect {
       filter: drop-shadow(0 10px 24px rgba(15, 23, 42, 0.05));
+    }
+
+    .ouro-lifecycle-visual {
+      min-height: 420px;
+    }
+
+    .ouro-lifecycle-copy {
+      display: flex;
+      flex-direction: column;
+      max-width: 544px;
+    }
+
+    .ouro-lifecycle-copy .ouro-h1 {
+      margin: 0 0 24px;
+    }
+
+    .ouro-lifecycle-copy > .ouro-body-lg {
+      max-width: 34rem;
+      margin: 0 0 40px;
+    }
+
+    .ouro-lifecycle-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .ouro-lifecycle-list > div {
+      transition: border-color 180ms ease, background 180ms ease;
+    }
+
+    .ouro-lifecycle-list > div:hover {
+      border-color: rgba(0, 210, 233, 0.36);
+      background: var(--ouro-white) !important;
+    }
+
+    .ouro-life-line-soft,
+    .ouro-life-line {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .ouro-life-line-soft {
+      stroke: var(--ouro-cyan-400);
+      stroke-width: 15;
+      opacity: 0.09;
+    }
+
+    .ouro-life-line {
+      stroke: url(#lifeLineGrad);
+      stroke-width: 5.5;
+      filter: drop-shadow(0 10px 20px rgba(0, 210, 233, 0.14));
+    }
+
+    .ouro-life-card rect {
+      filter: drop-shadow(0 12px 26px rgba(15, 23, 42, 0.06));
+    }
+
+    .ouro-life-card text {
+      font-family: var(--ouro-font-sans);
+    }
+
+    .ouro-cta-inner {
+      padding-top: clamp(108px, 14vh, 144px);
+      padding-bottom: clamp(80px, 10vh, 104px);
+    }
+
+    .ouro-cta-icon {
+      margin-bottom: 30px;
+    }
+
+    .ouro-cta-title {
+      margin: 0 0 22px;
+    }
+
+    .ouro-cta-subtitle {
+      margin: 0;
+      max-width: 640px;
+    }
+
+    .ouro-cta-actions {
+      margin-top: 56px;
     }
 
     .ouro-arch-layer {
@@ -1557,6 +1703,55 @@ body {
 
       .ouro-wave {
         height: 80px;
+      }
+
+      .ouro-boundary-wave {
+        height: 92px;
+      }
+
+      .ouro-boundary-wave.ouro-wave-top {
+        top: -10px;
+      }
+
+      .ouro-boundary-wave.ouro-wave-bottom {
+        bottom: -10px;
+      }
+
+      .ouro-cta-inner {
+        padding-top: 72px;
+        padding-bottom: 88px;
+      }
+
+      .ouro-cta-icon {
+        margin-bottom: 24px;
+      }
+
+      .ouro-cta-title {
+        margin-bottom: 18px;
+      }
+
+      .ouro-cta-actions {
+        margin-top: 42px;
+      }
+
+      .ouro-lifecycle-copy {
+        max-width: none;
+      }
+
+      .ouro-lifecycle-copy .ouro-h1 {
+        margin-bottom: 18px;
+      }
+
+      .ouro-lifecycle-copy > .ouro-body-lg {
+        margin-bottom: 32px;
+      }
+
+      .ouro-lifecycle-visual {
+        min-height: 340px;
+      }
+
+      #architecture .ouro-section-inner {
+        gap: 32px;
       }
     }
 
