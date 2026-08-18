@@ -109,6 +109,8 @@ html {
   color: var(--ouro-ink);
   background: var(--ouro-background);
   scroll-behavior: smooth;
+  scroll-padding-top: var(--ouro-hero-top, 72px);
+  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -168,6 +170,8 @@ body {
   flex-direction: column;
   justify-content: center;
   position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .ouro-btn-primary {
@@ -1436,6 +1440,16 @@ body {
       height: 120px;
       z-index: 0;
       pointer-events: none;
+      overflow: visible;
+      --ouro-wave-x: 0px;
+      --ouro-wave-y: 0px;
+    }
+
+    .ouro-wave path {
+      transform-box: fill-box;
+      transform-origin: center;
+      transform: translate3d(var(--ouro-wave-x), var(--ouro-wave-y), 0) scaleX(1.04);
+      transition: transform 80ms linear;
     }
 
     .ouro-wave-top {
@@ -1471,6 +1485,17 @@ body {
       fill: var(--ouro-surface);
       stroke: var(--ouro-primary);
       stroke-width: 2;
+    }
+
+    .ouro-loop-track {
+      stroke-linecap: round;
+      stroke-dasharray: 720;
+      stroke-dashoffset: 0;
+      filter: drop-shadow(0 12px 24px rgba(0, 210, 233, 0.10));
+    }
+
+    .ouro-loop-card rect {
+      filter: drop-shadow(0 10px 24px rgba(15, 23, 42, 0.05));
     }
 
     .ouro-arch-layer {
@@ -1544,7 +1569,8 @@ body {
       .ouro-feature-bubble,
       .ouro-principle-card,
       .ouro-philosophy-panel,
-      .ouro-arch-layer {
+      .ouro-arch-layer,
+      .ouro-wave path {
         transition-duration: 0.01ms;
       }
 
