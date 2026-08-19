@@ -692,8 +692,12 @@ const snapSections = sections.filter((section) => section !== finalSection);
 let waveFrame = 0;
 const desktopWaveQuery = window.matchMedia('(min-width: 768px)');
 const mobileWaveQuery = window.matchMedia('(max-width: 767px)');
-const mobileWaveIdleDelay = 320;
+const mobileWaveIdleDelay = 640;
+const mobileWaveStableFramesRequired = 8;
+const mobileWaveUsesScrollEnd = 'onscrollend' in window;
 let mobileWaveIdleTimer = 0;
+let mobileWaveStableFrame = 0;
+let mobileWaveSettleToken = 0;
 let mobileWaveLastScrollTop = getScrollTop();
 let mobileWaveLastScrollAt = performance.now();
 let mobileWaveActiveIndex = -1;
@@ -833,6 +837,11 @@ function syncMobileWaveMode() {
   root.classList.toggle('ouro-mobile-wave-mode', enabled);
 
   if (!enabled) {
+    window.clearTimeout(mobileWaveIdleTimer);
+    mobileWaveIdleTimer = 0;
+    window.cancelAnimationFrame(mobileWaveStableFrame);
+    mobileWaveStableFrame = 0;
+    mobileWaveSettleToken += 1;
     mobileWaveActiveIndex = -1;
     mobileWaveReveal = 0;
     mobileWaveMotion = 0;
@@ -847,6 +856,54 @@ function settleMobileWave() {
   requestWaveUpdate();
 }
 
+function queueMobileWaveSettle() {
+  window.clearTimeout(mobileWaveIdleTimer);
+  mobileWaveIdleTimer = 0;
+  window.cancelAnimationFrame(mobileWaveStableFrame);
+  mobileWaveStableFrame = 0;
+  const settleToken = ++mobileWaveSettleToken;
+
+  if (mobileWaveUsesScrollEnd) return;
+
+  mobileWaveIdleTimer = window.setTimeout(() => {
+    mobileWaveIdleTimer = 0;
+    let stableFrames = 0;
+
+    const verifyStableScroll = () => {
+      if (settleToken !== mobileWaveSettleToken) return;
+
+      const scrollTop = getScrollTop();
+      if (Math.abs(scrollTop - mobileWaveLastScrollTop) >= 0.5) {
+        mobileWaveLastScrollTop = scrollTop;
+        stableFrames = 0;
+      } else {
+        stableFrames += 1;
+      }
+
+      if (stableFrames >= mobileWaveStableFramesRequired) {
+        mobileWaveStableFrame = 0;
+        settleMobileWave();
+        return;
+      }
+
+      mobileWaveStableFrame = window.requestAnimationFrame(verifyStableScroll);
+    };
+
+    mobileWaveStableFrame = window.requestAnimationFrame(verifyStableScroll);
+  }, mobileWaveIdleDelay);
+}
+
+function handleMobileWaveScrollEnd() {
+  if (!mobileWaveQuery.matches || prefersReducedMotion) return;
+
+  window.clearTimeout(mobileWaveIdleTimer);
+  mobileWaveIdleTimer = 0;
+  window.cancelAnimationFrame(mobileWaveStableFrame);
+  mobileWaveStableFrame = 0;
+  mobileWaveSettleToken += 1;
+  settleMobileWave();
+}
+
 function handleMobileWaveScroll() {
   if (!mobileWaveQuery.matches || prefersReducedMotion) return;
 
@@ -854,7 +911,10 @@ function handleMobileWaveScroll() {
   const scrollTop = getScrollTop();
   const delta = scrollTop - mobileWaveLastScrollTop;
   const elapsed = Math.max(16, now - mobileWaveLastScrollAt);
-  if (Math.abs(delta) < 0.5) return;
+  if (Math.abs(delta) < 0.5) {
+    queueMobileWaveSettle();
+    return;
+  }
 
   mobileWaveLastScrollTop = scrollTop;
   mobileWaveLastScrollAt = now;
@@ -865,8 +925,7 @@ function handleMobileWaveScroll() {
   mobileWaveReveal = clamp(0.96 + velocity * 0.04, 0, 1);
   mobileWaveMotion = clamp(0.2 + velocity * 0.8, 0, 1);
 
-  window.clearTimeout(mobileWaveIdleTimer);
-  mobileWaveIdleTimer = window.setTimeout(settleMobileWave, mobileWaveIdleDelay);
+  queueMobileWaveSettle();
   requestWaveUpdate();
 }
 
@@ -880,22 +939,27 @@ function getWaveReveal(section, scrollTop) {
   return smoothStep(1 - clamp(distance / revealDistance, 0, 1));
 }
 
-function buildWavePath({ isBottom, seed }, scrollProgress, transitionProgress, flowProgress, flowPhase) {
-  const xs = [0, 360, 720, 1080, 1440];
+function buildWavePath({ isBottom, seed }, scrollProgress, transitionProgress, flowProgress, flowPhase, isMobile = false) {
+  const xs = [0, 180, 360, 540, 720, 900, 1080, 1260, 1440];
+  const waveFrequency = Math.PI * 4;
   const baseY = isBottom ? 58 : 54;
-  const restAmplitude = isBottom ? 27 : 23;
-  const liveAmplitude = 27 * transitionProgress;
+  const restAmplitude = (isBottom ? 27 : 23) * (isMobile ? 0.56 : 1);
+  const liveAmplitude = (isMobile ? 12 : 27) * transitionProgress;
   const flowAmplitude = (isBottom ? 8 : 7) * flowProgress;
   const phase = scrollProgress * Math.PI * 3.2 + seed;
   const drift = Math.sin(scrollProgress * Math.PI * 1.4 + seed) * 6;
+  const maxY = isMobile ? 94 : 106;
+  const minY = isMobile ? 28 : 16;
   const points = xs.map((x) => {
     const progress = x / 1440;
-    const rest = Math.sin(progress * Math.PI * 2 + seed) * restAmplitude;
-    const live = Math.sin(progress * Math.PI * 2 - phase) * liveAmplitude;
-    const lift = Math.sin(progress * Math.PI + phase * 0.42) * liveAmplitude * 0.42;
-    const flow = Math.sin(progress * Math.PI * 2 + flowPhase + seed * 0.7) * flowAmplitude;
-    const flowLift = Math.sin(progress * Math.PI + flowPhase * 0.65 + seed) * flowAmplitude * 0.32;
-    return clamp(baseY + rest + live + lift + flow + flowLift + drift, 16, 106);
+    const edgeEnvelope = 0.18 + Math.sin(progress * Math.PI) * 0.82;
+    const edgeGuard = Math.pow(1 - Math.sin(progress * Math.PI), 2) * 32;
+    const rest = Math.sin(progress * waveFrequency + seed) * restAmplitude;
+    const live = Math.sin(progress * waveFrequency - phase) * liveAmplitude;
+    const lift = Math.sin(progress * waveFrequency * 0.5 + phase * 0.42) * liveAmplitude * 0.42;
+    const flow = Math.sin(progress * waveFrequency + flowPhase + seed * 0.7) * flowAmplitude;
+    const flowLift = Math.sin(progress * waveFrequency * 0.5 + flowPhase * 0.65 + seed) * flowAmplitude * 0.32;
+    return clamp(baseY + (rest + live + lift + flow + flowLift) * edgeEnvelope + drift + edgeGuard, minY, maxY);
   });
 
   let d = `M0,${points[0].toFixed(1)}`;
@@ -949,7 +1013,7 @@ function updateWaves() {
     }
     item.wave.style.setProperty('--ouro-wave-x', `${x.toFixed(2)}px`);
     item.wave.style.setProperty('--ouro-wave-y', '0px');
-    item.path.setAttribute('d', buildWavePath(item, scrollProgress, pathProgress, flowProgress, flowPhase));
+    item.path.setAttribute('d', buildWavePath(item, scrollProgress, pathProgress, flowProgress, flowPhase, mobileMode));
     hasFlowingWave ||= !mobileMode && reveal > 0;
   });
 
@@ -973,6 +1037,7 @@ if (waves.length > 0) {
   updateWaves();
   window.addEventListener('scroll', requestWaveUpdate, { passive: true });
   window.addEventListener('scroll', handleMobileWaveScroll, { passive: true });
+  window.addEventListener('scrollend', handleMobileWaveScrollEnd, { passive: true });
   window.addEventListener('resize', requestWaveUpdate);
   desktopWaveQuery.addEventListener('change', requestWaveUpdate);
   mobileWaveQuery.addEventListener('change', () => {
