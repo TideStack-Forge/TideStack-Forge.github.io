@@ -700,6 +700,7 @@ let mobileWaveActiveIndex = -1;
 let mobileWaveReveal = 0;
 let mobileWaveMotion = 0;
 let mobileWaveDirection = 1;
+let waveMotionFrame = 0;
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
@@ -879,11 +880,12 @@ function getWaveReveal(section, scrollTop) {
   return smoothStep(1 - clamp(distance / revealDistance, 0, 1));
 }
 
-function buildWavePath({ isBottom, seed }, scrollProgress, transitionProgress) {
+function buildWavePath({ isBottom, seed }, scrollProgress, transitionProgress, flowProgress, flowPhase) {
   const xs = [0, 360, 720, 1080, 1440];
   const baseY = isBottom ? 58 : 54;
   const restAmplitude = isBottom ? 27 : 23;
   const liveAmplitude = 27 * transitionProgress;
+  const flowAmplitude = (isBottom ? 8 : 7) * flowProgress;
   const phase = scrollProgress * Math.PI * 3.2 + seed;
   const drift = Math.sin(scrollProgress * Math.PI * 1.4 + seed) * 6;
   const points = xs.map((x) => {
@@ -891,7 +893,9 @@ function buildWavePath({ isBottom, seed }, scrollProgress, transitionProgress) {
     const rest = Math.sin(progress * Math.PI * 2 + seed) * restAmplitude;
     const live = Math.sin(progress * Math.PI * 2 - phase) * liveAmplitude;
     const lift = Math.sin(progress * Math.PI + phase * 0.42) * liveAmplitude * 0.42;
-    return clamp(baseY + rest + live + lift + drift, 16, 106);
+    const flow = Math.sin(progress * Math.PI * 2 + flowPhase + seed * 0.7) * flowAmplitude;
+    const flowLift = Math.sin(progress * Math.PI + flowPhase * 0.65 + seed) * flowAmplitude * 0.32;
+    return clamp(baseY + rest + live + lift + flow + flowLift + drift, 16, 106);
   });
 
   let d = `M0,${points[0].toFixed(1)}`;
@@ -915,6 +919,10 @@ function updateWaves() {
   const mobileMode = mobileWaveQuery.matches && !prefersReducedMotion;
   const mobileWaveIndex = mobileMode && !isMobileWaveSuppressed() ? mobileWaveActiveIndex : -1;
   const mobileReveal = mobileWaveIndex >= 0 ? mobileWaveReveal : 0;
+  const flowPhase = desktopWaveQuery.matches && !prefersReducedMotion
+    ? performance.now() * 0.00042
+    : 0;
+  let hasFlowingWave = false;
   root.style.setProperty('--ouro-mobile-wave-reveal', mobileReveal.toFixed(3));
   root.style.setProperty('--ouro-mobile-wave-rise', `${((1 - mobileReveal) * 100).toFixed(2)}%`);
 
@@ -927,6 +935,7 @@ function updateWaves() {
     const pathProgress = mobileMode
       ? index === mobileWaveIndex ? mobileWaveMotion * 0.35 : 0
       : transitionProgress;
+    const flowProgress = mobileMode ? 0 : reveal;
     const x = mobileMode
       ? Math.sin(scrollProgress * Math.PI * 3 + index * 0.5) * 3 * mobileWaveMotion * mobileWaveDirection
       : Math.sin(scrollProgress * Math.PI * 3 + index * 0.5) * 7 * transitionProgress * direction;
@@ -936,8 +945,16 @@ function updateWaves() {
     item.wave.style.setProperty('--ouro-wave-rise', `${((1 - reveal) * 100).toFixed(2)}%`);
     item.wave.style.setProperty('--ouro-wave-x', `${x.toFixed(2)}px`);
     item.wave.style.setProperty('--ouro-wave-y', '0px');
-    item.path.setAttribute('d', buildWavePath(item, scrollProgress, pathProgress));
+    item.path.setAttribute('d', buildWavePath(item, scrollProgress, pathProgress, flowProgress, flowPhase));
+    hasFlowingWave ||= !mobileMode && reveal > 0;
   });
+
+  if (hasFlowingWave && !waveMotionFrame) {
+    waveMotionFrame = window.requestAnimationFrame(() => {
+      waveMotionFrame = 0;
+      requestWaveUpdate();
+    });
+  }
 }
 
 function requestWaveUpdate() {
