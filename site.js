@@ -817,23 +817,20 @@ function buildWavePath({ isBottom, seed }, scrollProgress, transitionProgress, f
   const xs = [0, 180, 360, 540, 720, 900, 1080, 1260, 1440];
   const waveFrequency = Math.PI * 4;
   const baseY = isBottom ? 58 : 54;
-  const restAmplitude = isBottom ? 27 : 23;
-  const liveAmplitude = 27 * transitionProgress;
-  const flowAmplitude = (isBottom ? 8 : 7) * flowProgress;
-  const phase = scrollProgress * Math.PI * 3.2 + seed;
-  const drift = Math.sin(scrollProgress * Math.PI * 1.4 + seed) * 6;
-  const maxY = 106;
-  const minY = 16;
+  const restAmplitude = isBottom ? 20 : 18;
+  const amplitudeScale = 0.92 + Math.sin(seed * 1.9) * 0.08;
+  const phase = seed * 0.08
+    + Math.sin(scrollProgress * Math.PI * 2 + seed) * 0.18 * transitionProgress
+    + Math.sin(flowPhase * 0.75 + seed * 0.4) * 0.18 * flowProgress;
+  const drift = Math.sin(scrollProgress * Math.PI * 1.4 + seed) * 3;
   const points = xs.map((x) => {
     const progress = x / 1440;
-    const edgeEnvelope = 0.18 + Math.sin(progress * Math.PI) * 0.82;
-    const edgeGuard = Math.pow(1 - Math.sin(progress * Math.PI), 2) * 32;
-    const rest = Math.sin(progress * waveFrequency + seed) * restAmplitude;
-    const live = Math.sin(progress * waveFrequency - phase) * liveAmplitude;
-    const lift = Math.sin(progress * waveFrequency * 0.5 + phase * 0.42) * liveAmplitude * 0.42;
-    const flow = Math.sin(progress * waveFrequency + flowPhase + seed * 0.7) * flowAmplitude;
-    const flowLift = Math.sin(progress * waveFrequency * 0.5 + flowPhase * 0.65 + seed) * flowAmplitude * 0.32;
-    return clamp(baseY + (rest + live + lift + flow + flowLift) * edgeEnvelope + drift + edgeGuard, minY, maxY);
+    const edgeEase = Math.sin(progress * Math.PI);
+    const edgeEnvelope = 0.78 + edgeEase * 0.22;
+    const edgeGuard = Math.pow(1 - edgeEase, 2) * 18;
+    const primary = Math.sin(progress * waveFrequency + phase) * restAmplitude * amplitudeScale;
+    const variation = Math.sin(progress * waveFrequency * 0.5 + seed * 0.35 + flowPhase * 0.16) * 0.9;
+    return clamp(baseY + (primary + variation) * edgeEnvelope + drift + edgeGuard, 20, 100);
   });
 
   let d = `M0,${points[0].toFixed(1)}`;
