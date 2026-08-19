@@ -692,7 +692,7 @@ const snapSections = sections.filter((section) => section !== finalSection);
 let waveFrame = 0;
 const desktopWaveQuery = window.matchMedia('(min-width: 768px)');
 const mobileWaveQuery = window.matchMedia('(max-width: 767px)');
-const mobileWaveIdleDelay = 150;
+const mobileWaveIdleDelay = 320;
 let mobileWaveIdleTimer = 0;
 let mobileWaveLastScrollTop = getScrollTop();
 let mobileWaveLastScrollAt = performance.now();
@@ -861,7 +861,7 @@ function handleMobileWaveScroll() {
   mobileWaveActiveIndex = getMobileWaveIndex();
 
   const velocity = clamp((Math.abs(delta) / elapsed) * 18, 0, 1);
-  mobileWaveReveal = clamp(0.84 + velocity * 0.16, 0, 1);
+  mobileWaveReveal = clamp(0.96 + velocity * 0.04, 0, 1);
   mobileWaveMotion = clamp(0.2 + velocity * 0.8, 0, 1);
 
   window.clearTimeout(mobileWaveIdleTimer);

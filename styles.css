@@ -1484,6 +1484,7 @@ body {
     }
 
     .ouro-boundary-wave path {
+      fill: color-mix(in srgb, var(--ouro-primary) 24%, var(--ouro-surface)) !important;
       transform: translate3d(var(--ouro-wave-x), var(--ouro-wave-y), 0) scale(1.08, 1.16);
     }
 
@@ -1498,26 +1499,41 @@ body {
     }
 
     .ouro-boundary-wave.ouro-wave-bottom {
+      position: fixed;
       bottom: -14px;
+      z-index: 60;
       opacity: var(--ouro-wave-reveal);
       transform: translate3d(0, var(--ouro-wave-rise), 0);
+      transition: opacity 360ms cubic-bezier(0.22, 0.61, 0.36, 1),
+        transform 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.18) 28%,
+        rgba(0, 0, 0, 0.72) 62%,
+        #000 100%
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.18) 28%,
+        rgba(0, 0, 0, 0.72) 62%,
+        #000 100%
+      );
+      -webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
       will-change: transform, opacity;
-    }
-
-    @media (min-width: 768px) {
-      .ouro-boundary-wave.ouro-wave-bottom {
-        position: fixed;
-      }
     }
 
     @media (max-width: 767px) {
       html.ouro-mobile-wave-mode .ouro-boundary-wave.ouro-wave-bottom {
         position: fixed;
-        height: 96px;
-        bottom: -10px;
+        height: 128px;
+        bottom: -16px;
         opacity: 0;
         transform: translate3d(0, 100%, 0);
-        transition: opacity 180ms ease, transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+        transition: opacity 360ms cubic-bezier(0.22, 0.61, 0.36, 1),
+          transform 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
         will-change: transform, opacity;
       }
 
@@ -2134,7 +2150,8 @@ body {
       }
 
       .ouro-boundary-wave.ouro-wave-bottom {
-        bottom: -10px;
+        height: 128px;
+        bottom: -16px;
       }
 
       .ouro-cta-inner {
