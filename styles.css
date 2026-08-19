@@ -1528,8 +1528,8 @@ body {
     @media (max-width: 767px) {
       html.ouro-mobile-wave-mode .ouro-boundary-wave.ouro-wave-bottom {
         position: fixed;
-        height: 176px;
-        bottom: calc(-64px - env(safe-area-inset-bottom, 0px));
+        height: 240px;
+        bottom: calc(-128px - env(safe-area-inset-bottom, 0px));
         opacity: 0;
         transform: translate3d(0, 100%, 0);
         transition: opacity 800ms linear,
@@ -2150,8 +2150,8 @@ body {
       }
 
       .ouro-boundary-wave.ouro-wave-bottom {
-        height: 176px;
-        bottom: calc(-64px - env(safe-area-inset-bottom, 0px));
+        height: 240px;
+        bottom: calc(-128px - env(safe-area-inset-bottom, 0px));
       }
 
       .ouro-cta-inner {
