@@ -1,41 +1,115 @@
 <!DOCTYPE html>
-<html class="light" lang="zh-CN" data-theme="dark">
+<html lang="zh-CN" data-theme="light" data-locale="zh" data-page="home">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="潮汐栈（TideStack）是 AI 时代的企业开发供应链：以模型为标准件，以 AI 为驱动力，贯通企业开发的每一个环节。高代码 × 低代码 × AI 融合开发，核心组件全面开源。">
-  <title>潮汐栈 TideStack — AI 时代的企业开发供应链</title>
+  <title>潮汐栈 — AI 时代的企业开发供应链</title>
   <link rel="icon" href="assets/tidestack-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js" defer></script>
-  <script src="site.js" defer></script>
+  <script>
+    (() => {
+      const storageKey = 'tidestack-theme';
+      const root = document.documentElement;
+
+      try {
+        const storedTheme = window.localStorage.getItem(storageKey);
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = storedTheme === 'dark' || storedTheme === 'light'
+          ? storedTheme
+          : prefersDark
+            ? 'dark'
+            : 'light';
+        root.dataset.theme = theme;
+        root.classList.toggle('dark', theme === 'dark');
+        root.classList.toggle('light', theme === 'light');
+      } catch (error) {
+        const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        root.dataset.theme = theme;
+        root.classList.toggle('dark', theme === 'dark');
+        root.classList.toggle('light', theme === 'light');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css?v=20260819k">
+  <script src="site.js?v=20260819j" defer></script>
+  <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js" defer onload="window.tidestackRefreshIcons && window.tidestackRefreshIcons()"></script>
 </head>
 <body>
-<nav class="fixed top-0 left-0 right-0 z-50 border-b" style="height: 72px; background: rgba(248, 250, 252, 0.88); backdrop-filter: blur(8px); border-color: var(--ouro-line);">
+<nav class="ouro-top-nav fixed top-0 left-0 right-0 z-50 border-b" data-site-nav>
     <div class="ouro-container flex items-center justify-between h-full">
-      <a href="#hero" class="flex items-center gap-3" data-dom-id="nav-logo">
+      <a href="index.html" class="flex items-center gap-3" data-dom-id="nav-logo">
         <img src="assets/tidestack-logo.svg" alt="潮汐栈 TideStack" class="h-8 w-auto" style="filter: drop-shadow(0 1px 1px rgba(15, 23, 42, 0.06));">
-        <span class="font-semibold text-lg" style="color: var(--ouro-ink);">潮汐栈 <span class="font-normal text-sm" style="color: var(--ouro-ink-3);">TideStack</span></span>
+        <span class="font-semibold text-lg" style="color: var(--ouro-ink);" data-dom-id="nav-brand">潮汐栈</span>
       </a>
-      <div class="hidden md:flex items-center gap-6">
-        <a href="#hero" class="ouro-nav-link text-sm font-medium" data-active="true" style="color: var(--ouro-ink);" data-dom-id="nav-home">首页</a>
-        <a href="#vision" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink-2);" data-dom-id="nav-vision">愿景</a>
-        <a href="#philosophy" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink-2);" data-dom-id="nav-philosophy">理念</a>
-        <a href="#principles" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink-2);" data-dom-id="nav-principles">原则</a>
-        <a href="#architecture" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink-2);" data-dom-id="nav-architecture">架构</a>
-        <a href="#fusion" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink-2);" data-dom-id="nav-fusion">融合</a>
-        <a href="#capabilities" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink-2);" data-dom-id="nav-capabilities">能力</a>
-        <a href="#opensource" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink-2);" data-dom-id="nav-opensource">开源</a>
+      <div class="ouro-desktop-nav items-center gap-6">
+        <a href="index.html" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink);" data-dom-id="nav-home" data-i18n="nav-home" aria-current="page">首页</a>
+        <a href="architecture.html" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink-2);" data-dom-id="nav-architecture" data-i18n="nav-architecture">架构</a>
+        <a href="features.html" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink-2);" data-dom-id="nav-features" data-i18n="nav-features">特性</a>
+        <a href="roadmap.html" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink-2);" data-dom-id="nav-roadmap" data-i18n="nav-roadmap">路线图</a>
       </div>
-      <div class="hidden md:flex items-center gap-6">
-        <a href="https://docs.tidestack.dev/" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink-2);" data-dom-id="nav-docs">文档</a>
+      <div class="ouro-desktop-actions items-center gap-4">
+        <button type="button" class="ouro-icon-button" data-theme-toggle aria-label="切换到暗色模式" title="切换到暗色模式">
+          <i data-lucide="moon" class="theme-icon theme-icon-dark w-4 h-4" aria-hidden="true"></i>
+          <i data-lucide="sun" class="theme-icon theme-icon-light w-4 h-4" aria-hidden="true"></i>
+        </button>
+        <div class="ouro-locale-switch" role="group" aria-label="语言切换">
+          <button type="button" class="ouro-locale-button" data-locale-option="zh" aria-pressed="true">中</button>
+          <button type="button" class="ouro-locale-button" data-locale-option="en" aria-pressed="false">EN</button>
+        </div>
+        <a href="https://docs.tidestack.dev/" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink-2);" data-dom-id="nav-docs" data-i18n="nav-docs">文档</a>
         <a href="https://github.com/TideStack-Forge" target="_blank" rel="noopener noreferrer" class="ouro-nav-link text-sm font-medium inline-flex items-center gap-1" style="color: var(--ouro-ink-2);" data-dom-id="nav-github">
-          GitHub
+          <span class="nav-link-label">GitHub</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="external-link" aria-hidden="true" class="lucide lucide-external-link w-3 h-3"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
         </a>
-        <a href="https://docs.tidestack.dev/docs/getting-started/" class="ouro-btn-primary text-sm" data-dom-id="nav-cta">快速开始</a>
+        <a href="https://docs.tidestack.dev/docs/getting-started/" class="ouro-btn-primary text-sm" data-dom-id="nav-cta" data-i18n="nav-cta">快速开始</a>
+      </div>
+      <div class="ouro-mobile-actions" aria-label="移动端站点控制">
+        <button type="button" class="ouro-icon-button" data-theme-toggle aria-label="切换到暗色模式" title="切换到暗色模式">
+          <i data-lucide="moon" class="theme-icon theme-icon-dark w-4 h-4" aria-hidden="true"></i>
+          <i data-lucide="sun" class="theme-icon theme-icon-light w-4 h-4" aria-hidden="true"></i>
+        </button>
+        <div class="ouro-locale-switch" role="group" aria-label="语言切换">
+          <button type="button" class="ouro-locale-button" data-locale-option="zh" aria-pressed="true">中</button>
+          <button type="button" class="ouro-locale-button" data-locale-option="en" aria-pressed="false">EN</button>
+        </div>
+        <button type="button" class="ouro-mobile-menu-button" data-mobile-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="打开导航菜单">
+          <i data-lucide="menu" class="menu-icon-open w-5 h-5" aria-hidden="true"></i>
+          <i data-lucide="x" class="menu-icon-close w-5 h-5" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
+    <div class="ouro-mobile-menu" id="mobile-menu" data-mobile-menu hidden>
+      <div class="ouro-container">
+        <div class="ouro-mobile-menu-links">
+          <a href="index.html" data-i18n="nav-home" aria-current="page">首页</a>
+          <a href="architecture.html" data-i18n="nav-architecture">架构</a>
+          <a href="features.html" data-i18n="nav-features">特性</a>
+          <a href="roadmap.html" data-i18n="nav-roadmap">路线图</a>
+        </div>
+        <div class="ouro-mobile-menu-controls">
+        <div class="ouro-mobile-menu-secondary-links">
+            <a href="https://docs.tidestack.dev/" data-i18n="nav-docs">文档</a>
+            <a href="https://github.com/TideStack-Forge" target="_blank" rel="noopener noreferrer">
+              <span>GitHub</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="w-3 h-3"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+            </a>
+          </div>
+          <a href="https://docs.tidestack.dev/docs/getting-started/" class="ouro-btn-primary text-sm" data-i18n="nav-cta">快速开始</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="ouro-section-dots" aria-label="页面位置">
+    <a href="#hero" class="ouro-section-dot" data-section-dot data-active="true" data-i18n-aria-label="section-hero" aria-label="首页" aria-current="true"><span data-i18n="section-hero">首页</span></a>
+    <a href="#vision" class="ouro-section-dot" data-section-dot data-i18n-aria-label="section-vision" aria-label="愿景"><span data-i18n="section-vision">愿景</span></a>
+    <a href="#philosophy" class="ouro-section-dot" data-section-dot data-i18n-aria-label="section-philosophy" aria-label="理念"><span data-i18n="section-philosophy">理念</span></a>
+    <a href="#principles" class="ouro-section-dot" data-section-dot data-i18n-aria-label="section-principles" aria-label="原则"><span data-i18n="section-principles">原则</span></a>
+    <a href="#architecture" class="ouro-section-dot" data-section-dot data-i18n-aria-label="section-architecture" aria-label="生命周期"><span data-i18n="section-architecture">生命周期</span></a>
+    <a href="#fusion" class="ouro-section-dot" data-section-dot data-i18n-aria-label="section-fusion" aria-label="融合"><span data-i18n="section-fusion">融合</span></a>
+    <a href="#capabilities" class="ouro-section-dot" data-section-dot data-i18n-aria-label="section-capabilities" aria-label="能力"><span data-i18n="section-capabilities">能力</span></a>
+    <a href="#opensource" class="ouro-section-dot" data-section-dot data-i18n-aria-label="section-opensource" aria-label="开源"><span data-i18n="section-opensource">开源</span></a>
+    <a href="#cta" class="ouro-section-dot" data-section-dot data-i18n-aria-label="section-cta" aria-label="开始"><span data-i18n="section-cta">开始</span></a>
   </nav>
 
   <main class="ouro-page-container" style="padding-top: 72px;">
@@ -54,11 +128,11 @@
         <p class="ouro-body-lg max-w-2xl mb-10" style="color: var(--ouro-ink-2);"><span style="color: var(--ouro-ink-2);">潮汐栈是 AI 时代的企业开发供应链：以模型为标准件，以 AI 为驱动力，贯通企业开发的每一个环节。</span>软件，进入工业化时代。</p>
         <div class="flex flex-col sm:flex-row items-center gap-4">
           <a href="https://docs.tidestack.dev/docs/getting-started/" class="ouro-btn-primary text-base" data-dom-id="hero-cta-primary">
-            快速开始
+            <span class="btn-label">快速开始</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-4 h-4"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
           </a>
           <a href="https://github.com/TideStack-Forge" class="ouro-btn-secondary text-base" data-dom-id="hero-cta-secondary">
-            GitHub
+            <span class="btn-label">GitHub</span>
             <i data-lucide="github" class="w-4 h-4"></i>
           </a>
         </div>
@@ -192,8 +266,8 @@
 
       <div class="ouro-section-inner flex flex-col justify-center h-full py-20">
         <div class="text-center max-w-2xl mx-auto mb-16">
-          <h2 class="ouro-h1 mb-6" style="color: var(--ouro-ink); text-wrap: balance; word-break: keep-all;"><p data-pm-slice="1 1 [&quot;blockquote&quot;,null]">写在代码之前的四条原则</p></h2>
-          <p class="ouro-body-lg" style="color: var(--ouro-ink-2);"><p data-pm-slice="1 1 [&quot;blockquote&quot;,null]">它们决定潮汐栈的每一个技术决策，也决定你使用它时的每一次体验。</p></p>
+          <h2 class="ouro-h1 mb-6" style="color: var(--ouro-ink); text-wrap: balance; word-break: keep-all;">写在代码之前的四条原则</h2>
+          <p class="ouro-body-lg" style="color: var(--ouro-ink-2);">它们决定潮汐栈的每一个技术决策，也决定你使用它时的每一次体验。</p>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -209,7 +283,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="git-merge" aria-hidden="true" class="lucide lucide-git-merge w-5 h-5" style="color: var(--ouro-primary);"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M6 21V9a9 9 0 0 0 9 9"></path></svg>
             </div>
             <h3 class="ouro-h3 mb-2" style="color: var(--ouro-ink);">渐进式采用</h3>
-            <p class="ouro-body" style="color: var(--ouro-ink-2);"><p data-pm-slice="1 1 [&quot;blockquote&quot;,null]">从一个模型、一个应用开始，逐步扩展，不做大爆炸式替换。</p></p>
+            <p class="ouro-body" style="color: var(--ouro-ink-2);">从一个模型、一个应用开始，逐步扩展，不做大爆炸式替换。</p>
           </div>
           <div class="ouro-principle-card p-6 rounded-2xl" style="background: var(--ouro-background); border: 1px solid var(--ouro-line); border-radius: 20px;">
             <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(0, 210, 233, 0.10);">
@@ -244,8 +318,8 @@
                 <stop offset="100%" style="stop-color: var(--ouro-blue-700); stop-opacity: 0.72"></stop>
               </linearGradient>
               <linearGradient id="lifeCardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color: var(--ouro-white); stop-opacity: 1"></stop>
-                <stop offset="100%" style="stop-color: var(--ouro-neutral-50); stop-opacity: 1"></stop>
+                <stop offset="0%" style="stop-color: var(--ouro-life-card-start); stop-opacity: 1"></stop>
+                <stop offset="100%" style="stop-color: var(--ouro-life-card-end); stop-opacity: 1"></stop>
               </linearGradient>
               <radialGradient id="lifeCoreGlow" cx="50%" cy="50%" r="58%">
                 <stop offset="0%" style="stop-color: var(--ouro-cyan-400); stop-opacity: 0.18"></stop>
@@ -333,7 +407,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="code-2" aria-hidden="true" class="lucide lucide-code-2 w-6 h-6" style="color: var(--ouro-primary);"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg>
             </div>
             <h3 class="ouro-h3 mb-3" style="color: var(--ouro-ink);">代码融合</h3>
-            <p class="ouro-body" style="color: var(--ouro-ink-2);"><p data-pm-slice="1 1 [&quot;blockquote&quot;,null]">SPI 扩展点、微前端基座、可扩展前端组件库、可扩展逻辑流节点、可扩展数据模型插件——自定义程序包可以嵌进低代码基座，基座也可以作为底层框架嵌进你的高代码应用。模型与代码，自由组合，彼此复用。</p></p>
+            <p class="ouro-body" style="color: var(--ouro-ink-2);">SPI 扩展点、微前端基座、可扩展前端组件库、可扩展逻辑流节点、可扩展数据模型插件——自定义程序包可以嵌进低代码基座，基座也可以作为底层框架嵌进你的高代码应用。模型与代码，自由组合，彼此复用。</p>
           </div>
           <div class="ouro-philosophy-panel rounded-2xl p-8" style="background: var(--ouro-background); border: 1px solid var(--ouro-line); border-radius: 24px;">
             <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-6" style="background: rgba(0, 210, 233, 0.10);">
@@ -347,7 +421,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sparkles" aria-hidden="true" class="lucide lucide-sparkles w-6 h-6" style="color: var(--ouro-primary);"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
             </div>
             <h3 class="ouro-h3 mb-3" style="color: var(--ouro-ink);">AI 融合</h3>
-            <p class="ouro-body" style="color: var(--ouro-ink-2);"><p data-pm-slice="1 1 [&quot;blockquote&quot;,null]">通过 TideStack Skills 与 MCP 协议，把模型资产以标准方式开放给 AI Coding 工具。AI 理解模型规范，协助快速建模、生成规范代码——融合不靠私有集成，靠的是开放协议。</p></p>
+            <p class="ouro-body" style="color: var(--ouro-ink-2);">通过 TideStack Skills 与 MCP 协议，把模型资产以标准方式开放给 AI Coding 工具。AI 理解模型规范，协助快速建模、生成规范代码——融合不靠私有集成，靠的是开放协议。</p>
           </div>
         </div>
       </div>
@@ -361,46 +435,46 @@
       <div class="ouro-section-inner flex flex-col justify-center h-full py-20">
         <div class="text-center max-w-2xl mx-auto mb-16">
           <h2 class="ouro-h1 mb-6" style="color: var(--ouro-ink); text-wrap: balance; word-break: keep-all;">从需求到运营，环环可交付</h2>
-          <p class="ouro-body-lg" style="color: var(--ouro-ink-2);"><p data-pm-slice="1 1 [&quot;blockquote&quot;,null]">数据、界面、接口、流程、组装、治理——构成企业应用的六项能力，全部开箱即用。</p></p>
+          <p class="ouro-body-lg" style="color: var(--ouro-ink-2);">数据、界面、接口、流程、组装、治理——构成企业应用的六项能力，全部开箱即用。</p>
         </div>
 
-        <div class="flex flex-wrap justify-center gap-5 max-w-4xl mx-auto">
-          <div class="ouro-feature-bubble flex flex-col items-center text-center p-6 rounded-3xl" style="background: var(--ouro-surface); border: 1px solid var(--ouro-line); width: 170px; border-radius: 28px;">
+        <div class="ouro-capabilities-grid gap-5 mx-auto">
+          <div class="ouro-feature-bubble flex flex-col items-center text-center p-6 rounded-3xl" style="background: var(--ouro-surface); border: 1px solid var(--ouro-line); border-radius: 28px;">
             <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4" style="background: rgba(0, 210, 233, 0.10);">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sparkles" aria-hidden="true" class="lucide lucide-sparkles w-6 h-6" style="color: var(--ouro-primary);"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
             </div>
             <h3 class="ouro-h3 mb-1" style="color: var(--ouro-ink);">AI 协同开发</h3>
             <p class="ouro-caption">通过 MCP 与 Skills 接入主流 AI Coding 工具</p>
           </div>
-          <div class="ouro-feature-bubble flex flex-col items-center text-center p-6 rounded-3xl" style="background: var(--ouro-surface); border: 1px solid var(--ouro-line); width: 170px; border-radius: 28px;">
+          <div class="ouro-feature-bubble flex flex-col items-center text-center p-6 rounded-3xl" style="background: var(--ouro-surface); border: 1px solid var(--ouro-line); border-radius: 28px;">
             <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4" style="background: rgba(0, 210, 233, 0.10);">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="table" aria-hidden="true" class="lucide lucide-table w-6 h-6" style="color: var(--ouro-primary);"><path d="M12 3v18"></path><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path><path d="M3 15h18"></path></svg>
             </div>
             <h3 class="ouro-h3 mb-1" style="color: var(--ouro-ink);">动态数据模型</h3>
             <p class="ouro-caption">JSON 定义模型与关系，运行时即时生效</p>
           </div>
-          <div class="ouro-feature-bubble flex flex-col items-center text-center p-6 rounded-3xl" style="background: var(--ouro-surface); border: 1px solid var(--ouro-line); width: 170px; border-radius: 28px;">
+          <div class="ouro-feature-bubble flex flex-col items-center text-center p-6 rounded-3xl" style="background: var(--ouro-surface); border: 1px solid var(--ouro-line); border-radius: 28px;">
             <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4" style="background: rgba(0, 210, 233, 0.10);">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="layout" aria-hidden="true" class="lucide lucide-layout w-6 h-6" style="color: var(--ouro-primary);"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
             </div>
             <h3 class="ouro-h3 mb-1" style="color: var(--ouro-ink);">界面与 API 自动生成</h3>
             <p class="ouro-caption">页面是配置而非代码，OpenAPI 自动产出</p>
           </div>
-          <div class="ouro-feature-bubble flex flex-col items-center text-center p-6 rounded-3xl" style="background: var(--ouro-surface); border: 1px solid var(--ouro-line); width: 170px; border-radius: 28px;">
+          <div class="ouro-feature-bubble flex flex-col items-center text-center p-6 rounded-3xl" style="background: var(--ouro-surface); border: 1px solid var(--ouro-line); border-radius: 28px;">
             <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4" style="background: rgba(0, 210, 233, 0.10);">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="route" aria-hidden="true" class="lucide lucide-route w-6 h-6" style="color: var(--ouro-primary);"><circle cx="6" cy="19" r="3"></circle><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"></path><circle cx="18" cy="5" r="3"></circle></svg>
             </div>
             <h3 class="ouro-h3 mb-1" style="color: var(--ouro-ink);">工作流与逻辑编排</h3>
             <p class="ouro-caption">可视化编排业务流程，定义支持版本化演进</p>
           </div>
-          <div class="ouro-feature-bubble flex flex-col items-center text-center p-6 rounded-3xl" style="background: var(--ouro-surface); border: 1px solid var(--ouro-line); width: 170px; border-radius: 28px;">
+          <div class="ouro-feature-bubble flex flex-col items-center text-center p-6 rounded-3xl" style="background: var(--ouro-surface); border: 1px solid var(--ouro-line); border-radius: 28px;">
             <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4" style="background: rgba(0, 210, 233, 0.10);">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="blocks" aria-hidden="true" class="lucide lucide-blocks w-6 h-6" style="color: var(--ouro-primary);"><path d="M10 22V7a1 1 0 0 0-1-1H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a1 1 0 0 0-1-1H2"></path><rect x="14" y="2" width="8" height="8" rx="1"></rect></svg>
             </div>
             <h3 class="ouro-h3 mb-1" style="color: var(--ouro-ink);">微前端组装</h3>
             <p class="ouro-caption">微前端基座，应用模块独立开发、动态集成</p>
           </div>
-          <div class="ouro-feature-bubble flex flex-col items-center text-center p-6 rounded-3xl" style="background: var(--ouro-surface); border: 1px solid var(--ouro-line); width: 170px; border-radius: 28px;">
+          <div class="ouro-feature-bubble flex flex-col items-center text-center p-6 rounded-3xl" style="background: var(--ouro-surface); border: 1px solid var(--ouro-line); border-radius: 28px;">
             <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-4" style="background: rgba(0, 210, 233, 0.10);">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="git-branch" aria-hidden="true" class="lucide lucide-git-branch w-6 h-6" style="color: var(--ouro-primary);"><path d="M15 6a9 9 0 0 0-9 9V3"></path><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle></svg>
             </div>
@@ -450,7 +524,7 @@
             <h3 class="ouro-h3 mb-2" style="color: var(--ouro-ink);">PrismUI 声明式 UI 库</h3>
             <p class="ouro-body" style="color: var(--ouro-ink-2);">面向企业应用的 UI Schema 驱动系统，一套 Schema 贯通组件、交互与可视化编辑器。</p>
             <div class="ouro-source-links">
-              <a class="ouro-source-link" href="https://github.com/Gengxin-Tech/prismui" target="_blank" rel="noreferrer">GitHub 仓库</a>
+              <a class="ouro-source-link" href="https://prismui.io/" target="_blank" rel="noreferrer" data-i18n="source-link-prismui">PrismUI 官网</a>
             </div>
           </div>
           <div class="ouro-principle-card p-6 rounded-2xl" style="background: var(--ouro-background); border: 1px solid var(--ouro-line); border-radius: 20px;">
@@ -491,24 +565,24 @@
 
     <section id="cta" class="ouro-page-section" style="padding: 0; background: linear-gradient(180deg, var(--ouro-surface) 0%, rgba(0, 210, 233, 0.06) 100%);">
       <div class="ouro-section-inner ouro-cta-inner flex flex-col items-center justify-center text-center py-20">
-        <img src="assets/tidestack-logo.svg" alt="潮汐栈 TideStack" class="ouro-cta-icon h-16 w-auto" style="filter: drop-shadow(0 12px 24px rgba(0, 210, 233, 0.16));">
+        <img src="assets/tidestack-logo.svg" alt="潮汐栈 TideStack" class="ouro-cta-icon w-auto" style="filter: drop-shadow(0 12px 24px rgba(0, 210, 233, 0.16));">
         <h2 class="ouro-cta-title ouro-h1" style="color: var(--ouro-ink); text-wrap: balance; word-break: keep-all;">潮水已至，上栈启航</h2>
         <p class="ouro-cta-subtitle ouro-body-lg max-w-xl" style="color: var(--ouro-ink-2);">从第一个模型开始，体验模型驱动的开发方式；从第一个应用开始，沉淀属于你们的数字资产。</p>
         <div class="ouro-cta-actions flex flex-col sm:flex-row items-center gap-4">
           <a href="https://docs.tidestack.dev/docs/getting-started/" class="ouro-btn-primary text-base" data-dom-id="footer-cta-primary">
-            快速开始
+            <span class="btn-label">快速开始</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-4 h-4"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
           </a>
           <a href="https://github.com/TideStack-Forge" class="ouro-btn-secondary text-base" data-dom-id="footer-cta-secondary">
-            访问 GitHub
+            <span class="btn-label">访问 GitHub</span>
             <i data-lucide="github" class="w-4 h-4"></i>
           </a>
         </div>
       </div>
 
-      <footer class="relative z-10 w-full mt-auto" style="background: var(--ouro-ink); color: var(--ouro-neutral-50);">
+      <footer class="relative z-10 w-full mt-auto" style="background: var(--ouro-footer-bg); color: var(--ouro-footer-ink);">
         <svg class="ouro-wave ouro-footer-wave ouro-wave-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z" style="fill: var(--ouro-ink);"></path>
+          <path d="M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,120 L0,120 Z" style="fill: var(--ouro-footer-bg);"></path>
         </svg>
         <div class="ouro-container ouro-footer-content py-16">
           <div class="grid md:grid-cols-4 gap-10 mb-12" style="margin-top: 16px;">
@@ -517,40 +591,42 @@
                 <img src="assets/tidestack-logo.svg" alt="潮汐栈 TideStack" class="h-6 w-auto">
                 <span class="font-semibold">潮汐栈</span>
               </div>
-              <p class="text-sm" style="color: var(--ouro-neutral-400);">潮汐栈（TideStack）——以模型为标准件的企业开发供应链。</p>
+              <p class="text-sm" style="color: var(--ouro-footer-muted);">潮汐栈（TideStack）——以模型为标准件的企业开发供应链。</p>
             </div>
             <div>
               <h4 class="font-semibold mb-4">产品</h4>
-              <ul class="space-y-2 text-sm" style="color: var(--ouro-neutral-400);">
-                <li><a href="#capabilities" style="color: inherit;">能力</a></li>
-                <li><a href="#architecture" style="color: inherit;">架构</a></li>
-                <li><a href="#" style="color: inherit;">路线图</a></li>
+              <ul class="space-y-2 text-sm" style="color: var(--ouro-footer-muted);">
+                <li><a href="features.html" style="color: inherit;">能力</a></li>
+                <li><a href="architecture.html" style="color: inherit;">架构</a></li>
+                <li><a href="roadmap.html" style="color: inherit;">路线图</a></li>
               </ul>
             </div>
             <div>
               <h4 class="font-semibold mb-4">开发者</h4>
-              <ul class="space-y-2 text-sm" style="color: var(--ouro-neutral-400);">
+              <ul class="space-y-2 text-sm" style="color: var(--ouro-footer-muted);">
                 <li><a href="https://docs.tidestack.dev/" style="color: inherit;">文档</a></li>
+                <li><a href="https://plugins.jetbrains.com/plugin/33463-tidestack-develop" style="color: inherit;">JetBrains 插件</a></li>
+                <li><a href="https://marketplace.visualstudio.com/items?itemName=TideStackForge.develop" style="color: inherit;">VS Code 插件</a></li>
                 <li><a href="#" style="color: inherit;">API 参考</a></li>
                 <li><a href="https://github.com/TideStack-Forge" style="color: inherit;">GitHub</a></li>
               </ul>
             </div>
             <div>
               <h4 class="font-semibold mb-4">资源</h4>
-              <ul class="space-y-2 text-sm" style="color: var(--ouro-neutral-400);">
+              <ul class="space-y-2 text-sm" style="color: var(--ouro-footer-muted);">
                 <li><a href="#" style="color: inherit;">博客</a></li>
                 <li><a href="#" style="color: inherit;">更新日志</a></li>
                 <li><a href="#" style="color: inherit;">社区</a></li>
               </ul>
             </div>
           </div>
-          <div class="pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4 text-sm" style="border-color: rgba(148, 163, 184, 0.15); color: var(--ouro-neutral-500);">
+          <div class="pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4 text-sm" style="border-color: var(--ouro-footer-line); color: var(--ouro-footer-muted);">
             <p>© 2026 潮汐栈 TideStack. 保留所有权利。</p>
             <div class="flex items-center gap-6">
               <a href="#" style="color: inherit;">隐私政策</a>
               <a href="#" style="color: inherit;">服务条款</a>
               <a href="https://github.com/TideStack-Forge" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1" style="color: inherit;">
-                GitHub
+                <span class="btn-label">GitHub</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="external-link" aria-hidden="true" class="lucide lucide-external-link w-3 h-3"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
               </a>
             </div>
