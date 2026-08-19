@@ -918,13 +918,10 @@ function updateWaves() {
   const scrollProgress = scrollTop / maxScroll;
   const mobileMode = mobileWaveQuery.matches && !prefersReducedMotion;
   const mobileWaveIndex = mobileMode && !isMobileWaveSuppressed() ? mobileWaveActiveIndex : -1;
-  const mobileReveal = mobileWaveIndex >= 0 ? mobileWaveReveal : 0;
   const flowPhase = desktopWaveQuery.matches && !prefersReducedMotion
     ? performance.now() * 0.00042
     : 0;
   let hasFlowingWave = false;
-  root.style.setProperty('--ouro-mobile-wave-reveal', mobileReveal.toFixed(3));
-  root.style.setProperty('--ouro-mobile-wave-rise', `${((1 - mobileReveal) * 100).toFixed(2)}%`);
 
   boundaryWaves.forEach((item, index) => {
     const reveal = mobileMode
