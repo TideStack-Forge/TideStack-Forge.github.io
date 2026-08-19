@@ -123,20 +123,20 @@ const translations = {
       'fusion-card-2-body': 'Maven 插件、IDE 插件、本地平台联合调试——建模、编码、调试在同一条工作流里完成。低代码开发者与高代码开发者共用一套工具、一个节奏，谁也不用在两套世界里来回切换。',
       'fusion-card-3-title': 'AI 融合',
       'fusion-card-3-body': '通过 TideStack Skills 与 MCP 协议，把模型资产以标准方式开放给 AI Coding 工具。AI 理解模型规范，协助快速建模、生成规范代码——融合不靠私有集成，靠的是开放协议。',
-      'capabilities h2': '从需求到运营，环环可交付',
-      'capabilities p': '数据、界面、接口、流程、组装、治理——构成企业应用的六项能力，全部开箱即用。',
-      'capability-1-title': 'AI 协同开发',
-      'capability-1-body': '通过 MCP 与 Skills 接入主流 AI Coding 工具',
-      'capability-2-title': '动态数据模型',
-      'capability-2-body': 'JSON 定义模型与关系，运行时即时生效',
-      'capability-3-title': '界面与 API 自动生成',
-      'capability-3-body': '页面是配置而非代码，OpenAPI 自动产出',
-      'capability-4-title': '工作流与逻辑编排',
-      'capability-4-body': '可视化编排业务流程，定义支持版本化演进',
-      'capability-5-title': '微前端组装',
-      'capability-5-body': '微前端基座，应用模块独立开发、动态集成',
-      'capability-6-title': '资产治理与演进',
-      'capability-6-body': '元数据版本化管理，应用随业务持续生长',
+      'capabilities h2': '一套模型，长出一个完整应用',
+      'capabilities p': '以业务模型为源头，潮汐栈把数据、页面、接口、流程和应用交付组织在一起，让应用从设计、运行到后续变更保持一致。',
+      'capability-1-title': '业务建模',
+      'capability-1-body': '把实体、关系和规则沉淀为可复用的模型',
+      'capability-2-title': '数据与接口',
+      'capability-2-body': '模型驱动数据访问与 Web API',
+      'capability-3-title': '页面与交互',
+      'capability-3-body': '用 UI 模型定义页面、表单和交互',
+      'capability-4-title': '流程与协同',
+      'capability-4-body': '把业务逻辑、审批和通知编排成流程',
+      'capability-5-title': '应用组装',
+      'capability-5-body': '模型、页面和扩展能力按需组合交付',
+      'capability-6-title': '版本与治理',
+      'capability-6-body': '统一管理模型、权限、版本和变更',
       'opensource h2': '开放，从开源开始',
       'opensource p': '潮汐栈的核心组件已逐一开源。你可以按需选择其中一个组件接入现有体系，而不必完整采用整个平台。',
       'source-1-title': '动态数据模型',
@@ -153,7 +153,7 @@ const translations = {
       'source-6-body': 'IntelliJ、VS Code 和公共插件组件共用同一套开发能力。',
       'source-link-github': 'GitHub 仓库',
       'source-link-prismui': 'PrismUI 官网',
-      'cta h2': '潮水已至，上栈启航',
+      'cta h2': '潮起此刻，上栈启航',
       'cta p': '从第一个模型开始，体验模型驱动的开发方式；从第一个应用开始，沉淀属于你们的数字资产。',
       'footer-cta-primary .btn-label': '快速开始',
       'footer-cta-secondary .btn-label': '访问 GitHub',
@@ -299,20 +299,20 @@ const translations = {
       'fusion-card-2-body': 'Maven plugins, IDE plugins, and local platform debugging bring modeling, coding, and debugging into one workflow. Low-code and high-code developers share the same tools and cadence instead of switching between separate worlds.',
       'fusion-card-3-title': 'AI fusion',
       'fusion-card-3-body': 'Through TideStack Skills and MCP, model assets are exposed to AI coding tools in a standard way. AI understands the model conventions, assists with rapid modeling, and generates compliant code. The integration is built on open protocols, not private adapters.',
-      'capabilities h2': 'Deliver every link from demand to operation',
-      'capabilities p': 'Data, interfaces, APIs, workflows, composition, and governance: the six capabilities that make enterprise applications work are ready out of the box.',
-      'capability-1-title': 'AI-assisted development',
-      'capability-1-body': 'Connect mainstream AI coding tools through MCP and Skills',
-      'capability-2-title': 'Dynamic data models',
-      'capability-2-body': 'Define models and relationships in JSON, effective at runtime',
-      'capability-3-title': 'Generated UI and APIs',
-      'capability-3-body': 'Pages are configuration, not code, and OpenAPI is generated automatically',
-      'capability-4-title': 'Workflow orchestration',
-      'capability-4-body': 'Visually orchestrate business processes with versioned definitions',
-      'capability-5-title': 'Micro-frontend composition',
-      'capability-5-body': 'Independent application modules built and integrated dynamically',
-      'capability-6-title': 'Asset governance and evolution',
-      'capability-6-body': 'Version metadata and let applications keep growing with the business',
+      'capabilities h2': 'One model grows into a complete application',
+      'capabilities p': 'TideStack connects data, pages, APIs, workflows, and application delivery around one business model, so the application stays consistent from design through runtime and future change.',
+      'capability-1-title': 'Business modeling',
+      'capability-1-body': 'Turn business entities, relationships, and rules into models that teams and tools can understand and reuse.',
+      'capability-2-title': 'Data and APIs',
+      'capability-2-body': 'Let models drive data access and Web APIs instead of repeating entities and controller code.',
+      'capability-3-title': 'Pages and interactions',
+      'capability-3-body': 'Define pages, forms, lists, and interactions with UI models and schemas, then render them at runtime.',
+      'capability-4-title': 'Workflows and collaboration',
+      'capability-4-body': 'Orchestrate business logic, approvals, and notifications as versioned workflows.',
+      'capability-5-title': 'Application composition',
+      'capability-5-body': 'Assemble models, pages, and extensions into application modules that can be delivered independently.',
+      'capability-6-title': 'Versioning and governance',
+      'capability-6-body': 'Manage models, permissions, versions, and changes together as the application evolves.',
       'opensource h2': 'Open starts with open source',
       'opensource p': 'TideStack core components are being open sourced one by one. You can adopt only the component you need inside your existing system without adopting the whole platform.',
       'source-1-title': 'Dynamic data models',
@@ -677,10 +677,11 @@ const boundaryWaves = Array.from(document.querySelectorAll('.ouro-boundary-wave'
   .map((wave, index) => ({
     wave,
     path: wave.querySelector('path'),
+    section: wave.closest('.ouro-page-section'),
     isBottom: wave.classList.contains('ouro-wave-bottom'),
     seed: index * 0.64,
   }))
-  .filter((item) => item.path);
+  .filter((item) => item.path && item.section);
 const sectionLinks = Array.from(document.querySelectorAll('[data-section-dot][href^="#"]'));
 const sections = sectionLinks
   .map((link) => document.querySelector(link.getAttribute('href')))
@@ -689,11 +690,16 @@ const finalSection = document.querySelector('#cta');
 const snapSections = sections.filter((section) => section !== finalSection);
 
 let waveFrame = 0;
-let lastWaveScrollTop = window.scrollY || document.documentElement.scrollTop;
-let lastWaveTime = performance.now();
-let lastWaveInputAt = lastWaveTime;
-let waveEnergy = 0;
-let waveTargetEnergy = 0;
+const desktopWaveQuery = window.matchMedia('(min-width: 768px)');
+const mobileWaveQuery = window.matchMedia('(max-width: 767px)');
+const mobileWaveIdleDelay = 150;
+let mobileWaveIdleTimer = 0;
+let mobileWaveLastScrollTop = getScrollTop();
+let mobileWaveLastScrollAt = performance.now();
+let mobileWaveActiveIndex = -1;
+let mobileWaveReveal = 0;
+let mobileWaveMotion = 0;
+let mobileWaveDirection = 1;
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
@@ -801,12 +807,84 @@ function bindSectionSnap() {
   });
 }
 
-function buildWavePath({ isBottom, seed }, scrollProgress, energy, settlePhase) {
+function smoothStep(value) {
+  return value * value * (3 - 2 * value);
+}
+
+function getMobileWaveIndex() {
+  const viewportFocus = window.innerHeight * 0.82;
+
+  return boundaryWaves.reduce((nearestIndex, item) => {
+    const nearestDistance = Math.abs(
+      boundaryWaves[nearestIndex].section.getBoundingClientRect().bottom - viewportFocus,
+    );
+    const distance = Math.abs(item.section.getBoundingClientRect().bottom - viewportFocus);
+    return distance < nearestDistance ? index : nearestIndex;
+  }, 0);
+}
+
+function isMobileWaveSuppressed() {
+  return finalSection && finalSection.getBoundingClientRect().top < window.innerHeight;
+}
+
+function syncMobileWaveMode() {
+  const enabled = mobileWaveQuery.matches && !prefersReducedMotion && boundaryWaves.length > 0;
+  root.classList.toggle('ouro-mobile-wave-mode', enabled);
+
+  if (!enabled) {
+    mobileWaveActiveIndex = -1;
+    mobileWaveReveal = 0;
+    mobileWaveMotion = 0;
+  }
+}
+
+function settleMobileWave() {
+  if (!mobileWaveQuery.matches || prefersReducedMotion) return;
+
+  mobileWaveReveal = 0;
+  mobileWaveMotion = 0;
+  requestWaveUpdate();
+}
+
+function handleMobileWaveScroll() {
+  if (!mobileWaveQuery.matches || prefersReducedMotion) return;
+
+  const now = performance.now();
+  const scrollTop = getScrollTop();
+  const delta = scrollTop - mobileWaveLastScrollTop;
+  const elapsed = Math.max(16, now - mobileWaveLastScrollAt);
+  if (Math.abs(delta) < 0.5) return;
+
+  mobileWaveLastScrollTop = scrollTop;
+  mobileWaveLastScrollAt = now;
+  mobileWaveDirection = delta > 0 ? 1 : -1;
+  mobileWaveActiveIndex = getMobileWaveIndex();
+
+  const velocity = clamp((Math.abs(delta) / elapsed) * 18, 0, 1);
+  mobileWaveReveal = clamp(0.84 + velocity * 0.16, 0, 1);
+  mobileWaveMotion = clamp(0.2 + velocity * 0.8, 0, 1);
+
+  window.clearTimeout(mobileWaveIdleTimer);
+  mobileWaveIdleTimer = window.setTimeout(settleMobileWave, mobileWaveIdleDelay);
+  requestWaveUpdate();
+}
+
+function getWaveReveal(section, scrollTop) {
+  if (!desktopWaveQuery.matches) return 1;
+
+  const distance = Math.abs(scrollTop - getSectionOffset(section));
+  if (prefersReducedMotion) return distance <= 1 ? 1 : 0;
+
+  const revealDistance = clamp(window.innerHeight * 0.32, 180, 360);
+  return smoothStep(1 - clamp(distance / revealDistance, 0, 1));
+}
+
+function buildWavePath({ isBottom, seed }, scrollProgress, transitionProgress) {
   const xs = [0, 360, 720, 1080, 1440];
   const baseY = isBottom ? 58 : 54;
   const restAmplitude = isBottom ? 19 : 17;
-  const liveAmplitude = 26 * energy;
-  const phase = scrollProgress * Math.PI * 3.2 + seed + settlePhase;
+  const liveAmplitude = 16 * transitionProgress;
+  const phase = scrollProgress * Math.PI * 3.2 + seed;
   const drift = Math.sin(scrollProgress * Math.PI * 1.4 + seed) * 6;
   const points = xs.map((x) => {
     const progress = x / 1440;
@@ -831,40 +909,32 @@ function buildWavePath({ isBottom, seed }, scrollProgress, energy, settlePhase) 
 
 function updateWaves() {
   waveFrame = 0;
-  const now = performance.now();
   const scrollTop = getScrollTop();
   const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
   const scrollProgress = scrollTop / maxScroll;
-  const timeSinceInput = now - lastWaveInputAt;
+  const mobileMode = mobileWaveQuery.matches && !prefersReducedMotion;
+  const mobileWaveIndex = mobileMode && !isMobileWaveSuppressed() ? mobileWaveActiveIndex : -1;
 
-  if (timeSinceInput > 80) {
-    waveTargetEnergy *= 0.84;
-  }
-
-  waveEnergy += (waveTargetEnergy - waveEnergy) * 0.18;
-  if (timeSinceInput > 120) {
-    waveEnergy *= 0.94;
-  }
-
-  const settleProgress = clamp(timeSinceInput / 920, 0, 1);
-  const settleEase = 1 - Math.pow(1 - settleProgress, 3);
-  const settlePhase = Math.sin(settleEase * Math.PI * 2.5) * waveEnergy * 2.2;
-
-  waves.forEach((wave, index) => {
+  boundaryWaves.forEach((item, index) => {
+    const reveal = mobileMode
+      ? index === mobileWaveIndex ? mobileWaveReveal : 0
+      : getWaveReveal(item.section, scrollTop);
+    const transitionProgress = 1 - reveal;
     const direction = index % 2 === 0 ? 1 : -1;
-    const x = Math.sin(scrollProgress * Math.PI * 3 + settlePhase + index * 0.5) * (6 + waveEnergy * 10) * direction;
-    const y = Math.cos(scrollProgress * Math.PI * 2.4 + settlePhase + index * 0.42) * (2 + waveEnergy * 5);
-    wave.style.setProperty('--ouro-wave-x', `${x.toFixed(2)}px`);
-    wave.style.setProperty('--ouro-wave-y', `${y.toFixed(2)}px`);
-  });
+    const pathProgress = mobileMode
+      ? index === mobileWaveIndex ? mobileWaveMotion * 0.35 : 0
+      : transitionProgress;
+    const x = mobileMode
+      ? Math.sin(scrollProgress * Math.PI * 3 + index * 0.5) * 3 * mobileWaveMotion * mobileWaveDirection
+      : Math.sin(scrollProgress * Math.PI * 3 + index * 0.5) * 7 * transitionProgress * direction;
 
-  boundaryWaves.forEach((item) => {
-    item.path.setAttribute('d', buildWavePath(item, scrollProgress, waveEnergy, settlePhase));
+    item.wave.dataset.mobileWaveActive = String(index === mobileWaveIndex);
+    item.wave.style.setProperty('--ouro-wave-reveal', reveal.toFixed(3));
+    item.wave.style.setProperty('--ouro-wave-rise', `${((1 - reveal) * 100).toFixed(2)}%`);
+    item.wave.style.setProperty('--ouro-wave-x', `${x.toFixed(2)}px`);
+    item.wave.style.setProperty('--ouro-wave-y', '0px');
+    item.path.setAttribute('d', buildWavePath(item, scrollProgress, pathProgress));
   });
-
-  if (waveEnergy > 0.004 || waveTargetEnergy > 0.004 || timeSinceInput < 960) {
-    waveFrame = window.requestAnimationFrame(updateWaves);
-  }
 }
 
 function requestWaveUpdate() {
@@ -872,28 +942,21 @@ function requestWaveUpdate() {
   waveFrame = window.requestAnimationFrame(updateWaves);
 }
 
-function handleWaveScroll() {
-  const now = performance.now();
-  const scrollTop = getScrollTop();
-  const elapsed = Math.max(16, now - lastWaveTime);
-  const velocity = Math.abs(scrollTop - lastWaveScrollTop) / elapsed;
-
-  lastWaveScrollTop = scrollTop;
-  lastWaveTime = now;
-  lastWaveInputAt = now;
-  waveTargetEnergy = clamp(velocity * 0.85 + 0.08, 0.12, 1);
-  requestWaveUpdate();
-}
-
 bindSectionSnap();
 
-if (!prefersReducedMotion && waves.length > 0) {
+if (waves.length > 0) {
+  syncMobileWaveMode();
   updateWaves();
-  window.addEventListener(
-    'scroll',
-    handleWaveScroll,
-    { passive: true },
-  );
+  window.addEventListener('scroll', requestWaveUpdate, { passive: true });
+  window.addEventListener('scroll', handleMobileWaveScroll, { passive: true });
+  window.addEventListener('resize', requestWaveUpdate);
+  desktopWaveQuery.addEventListener('change', requestWaveUpdate);
+  mobileWaveQuery.addEventListener('change', () => {
+    syncMobileWaveMode();
+    mobileWaveLastScrollTop = getScrollTop();
+    mobileWaveLastScrollAt = performance.now();
+    requestWaveUpdate();
+  });
 }
 
 if ('IntersectionObserver' in window && sections.length > 0) {

@@ -1479,6 +1479,8 @@ body {
       right: auto;
       width: 104vw;
       height: 132px;
+      --ouro-wave-reveal: 1;
+      --ouro-wave-rise: 0%;
     }
 
     .ouro-boundary-wave path {
@@ -1497,7 +1499,32 @@ body {
 
     .ouro-boundary-wave.ouro-wave-bottom {
       bottom: -14px;
-      transform: none;
+      opacity: var(--ouro-wave-reveal);
+      transform: translate3d(0, var(--ouro-wave-rise), 0);
+      will-change: transform, opacity;
+    }
+
+    @media (min-width: 768px) {
+      .ouro-boundary-wave.ouro-wave-bottom {
+        position: fixed;
+      }
+    }
+
+    @media (max-width: 767px) {
+      html.ouro-mobile-wave-mode .ouro-boundary-wave.ouro-wave-bottom {
+        position: fixed;
+        height: 96px;
+        bottom: -10px;
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+        transition: opacity 180ms ease, transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+        will-change: transform, opacity;
+      }
+
+      html.ouro-mobile-wave-mode .ouro-boundary-wave.ouro-wave-bottom[data-mobile-wave-active="true"] {
+        opacity: var(--ouro-wave-reveal);
+        transform: translate3d(0, var(--ouro-wave-rise), 0);
+      }
     }
 
     .ouro-footer-wave {
