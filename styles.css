@@ -1504,8 +1504,8 @@ body {
       z-index: 60;
       opacity: var(--ouro-wave-reveal);
       transform: translate3d(0, var(--ouro-wave-rise), 0);
-      transition: opacity 360ms cubic-bezier(0.22, 0.61, 0.36, 1),
-        transform 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
+      transition: opacity 800ms cubic-bezier(0.22, 0.61, 0.36, 1),
+        transform 800ms cubic-bezier(0.22, 0.61, 0.36, 1);
       -webkit-mask-image: linear-gradient(
         to bottom,
         transparent 0%,
@@ -1529,11 +1529,11 @@ body {
       html.ouro-mobile-wave-mode .ouro-boundary-wave.ouro-wave-bottom {
         position: fixed;
         height: 128px;
-        bottom: -16px;
+        bottom: calc(-40px - env(safe-area-inset-bottom, 0px));
         opacity: 0;
         transform: translate3d(0, 100%, 0);
-        transition: opacity 360ms cubic-bezier(0.22, 0.61, 0.36, 1),
-          transform 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
+        transition: opacity 800ms cubic-bezier(0.22, 0.61, 0.36, 1),
+          transform 800ms cubic-bezier(0.22, 0.61, 0.36, 1);
         will-change: transform, opacity;
       }
 
@@ -2151,7 +2151,7 @@ body {
 
       .ouro-boundary-wave.ouro-wave-bottom {
         height: 128px;
-        bottom: -16px;
+        bottom: calc(-40px - env(safe-area-inset-bottom, 0px));
       }
 
       .ouro-cta-inner {

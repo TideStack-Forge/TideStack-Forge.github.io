@@ -882,15 +882,15 @@ function getWaveReveal(section, scrollTop) {
 function buildWavePath({ isBottom, seed }, scrollProgress, transitionProgress) {
   const xs = [0, 360, 720, 1080, 1440];
   const baseY = isBottom ? 58 : 54;
-  const restAmplitude = isBottom ? 19 : 17;
-  const liveAmplitude = 16 * transitionProgress;
+  const restAmplitude = isBottom ? 27 : 23;
+  const liveAmplitude = 27 * transitionProgress;
   const phase = scrollProgress * Math.PI * 3.2 + seed;
   const drift = Math.sin(scrollProgress * Math.PI * 1.4 + seed) * 6;
   const points = xs.map((x) => {
     const progress = x / 1440;
     const rest = Math.sin(progress * Math.PI * 2 + seed) * restAmplitude;
     const live = Math.sin(progress * Math.PI * 2 - phase) * liveAmplitude;
-    const lift = Math.sin(progress * Math.PI + phase * 0.42) * liveAmplitude * 0.36;
+    const lift = Math.sin(progress * Math.PI + phase * 0.42) * liveAmplitude * 0.42;
     return clamp(baseY + rest + live + lift + drift, 16, 106);
   });
 
