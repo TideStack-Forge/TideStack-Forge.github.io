@@ -940,6 +940,13 @@ function updateWaves() {
     item.wave.dataset.mobileWaveActive = String(index === mobileWaveIndex);
     item.wave.style.setProperty('--ouro-wave-reveal', reveal.toFixed(3));
     item.wave.style.setProperty('--ouro-wave-rise', `${((1 - reveal) * 100).toFixed(2)}%`);
+    if (mobileMode) {
+      const mobileWaveHeight = 240;
+      const mobileWaveOvershoot = 128;
+      const waveTop = scrollTop + window.innerHeight + mobileWaveOvershoot
+        - mobileWaveHeight - item.section.offsetTop;
+      item.wave.style.setProperty('--ouro-wave-top', `${waveTop.toFixed(2)}px`);
+    }
     item.wave.style.setProperty('--ouro-wave-x', `${x.toFixed(2)}px`);
     item.wave.style.setProperty('--ouro-wave-y', '0px');
     item.path.setAttribute('d', buildWavePath(item, scrollProgress, pathProgress, flowProgress, flowPhase));
