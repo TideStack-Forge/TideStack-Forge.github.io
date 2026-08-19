@@ -814,7 +814,7 @@ function smoothStep(value) {
 function getMobileWaveIndex() {
   const viewportFocus = window.innerHeight * 0.82;
 
-  return boundaryWaves.reduce((nearestIndex, item) => {
+  return boundaryWaves.reduce((nearestIndex, item, index) => {
     const nearestDistance = Math.abs(
       boundaryWaves[nearestIndex].section.getBoundingClientRect().bottom - viewportFocus,
     );
