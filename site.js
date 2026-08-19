@@ -685,6 +685,8 @@ const sectionLinks = Array.from(document.querySelectorAll('[data-section-dot][hr
 const sections = sectionLinks
   .map((link) => document.querySelector(link.getAttribute('href')))
   .filter(Boolean);
+const finalSection = document.querySelector('#cta');
+const snapSections = sections.filter((section) => section !== finalSection);
 
 let waveFrame = 0;
 let lastWaveScrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -699,97 +701,87 @@ function getScrollTop() {
   return window.scrollY || document.documentElement.scrollTop;
 }
 
-function getSnapOffset() {
+function getSectionOffset(section) {
   const nav = document.querySelector('[data-site-nav]');
-  return nav ? Math.round(nav.getBoundingClientRect().height) : 0;
+  const navHeight = nav ? Math.round(nav.getBoundingClientRect().height) : 0;
+  return Math.max(0, Math.round(section.offsetTop - navHeight));
 }
 
-function getSnapPoints() {
-  const offset = getSnapOffset();
-  const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-  return sections.map((section) => clamp(Math.round(section.offsetTop - offset), 0, maxScroll));
-}
-
-function getNearestSnapIndex(points, currentTop = getScrollTop()) {
-  return points.reduce((nearest, point, index) => {
-    const distance = Math.abs(point - currentTop);
-    return distance < nearest.distance ? { index, distance } : nearest;
-  }, { index: 0, distance: Number.POSITIVE_INFINITY }).index;
-}
-
-function getSnapIndexForDirection(direction, points) {
+function getSectionSnapTarget(direction) {
   const currentTop = getScrollTop();
   const threshold = 24;
+  const points = snapSections.map(getSectionOffset);
 
   if (direction > 0) {
-    const nextIndex = points.findIndex((point) => point > currentTop + threshold);
-    return nextIndex === -1 ? points.length - 1 : nextIndex;
+    return points.find((point) => point > currentTop + threshold) ?? null;
   }
 
-  for (let index = points.length - 1; index >= 0; index -= 1) {
-    if (points[index] < currentTop - threshold) return index;
-  }
-
-  return 0;
+  return points.findLast((point) => point < currentTop - threshold) ?? null;
 }
 
-function scrollToSnapIndex(index, points = getSnapPoints()) {
-  if (points.length === 0) return;
-  const targetIndex = clamp(index, 0, points.length - 1);
+function isInFinalSection() {
+  return finalSection && getScrollTop() >= getSectionOffset(finalSection) - 24;
+}
+
+function scrollToSection(targetTop) {
   window.scrollTo({
-    top: points[targetIndex],
+    top: targetTop,
     behavior: prefersReducedMotion ? 'auto' : 'smooth',
   });
 }
 
 function bindSectionSnap() {
-  if (sections.length < 2) return;
+  if (snapSections.length < 2) return;
 
   let wheelRemainder = 0;
   let snappingUntil = 0;
   let touchStartY = null;
 
-  const canSnap = () => window.innerWidth >= 768 && !root.classList.contains('is-mobile-menu-open');
+  const canSnap = () => window.innerWidth >= 768
+    && !root.classList.contains('is-mobile-menu-open')
+    && !isInFinalSection();
 
   window.addEventListener('wheel', (event) => {
     if (!canSnap() || event.ctrlKey || Math.abs(event.deltaY) < Math.abs(event.deltaX)) return;
 
-    event.preventDefault();
-
     const now = performance.now();
-    if (now < snappingUntil) return;
+    if (now < snappingUntil) {
+      event.preventDefault();
+      return;
+    }
 
     wheelRemainder += event.deltaY;
     if (Math.abs(wheelRemainder) < 36) return;
 
-    const direction = wheelRemainder > 0 ? 1 : -1;
-    const points = getSnapPoints();
-    scrollToSnapIndex(getSnapIndexForDirection(direction, points), points);
-
+    const targetTop = getSectionSnapTarget(wheelRemainder > 0 ? 1 : -1);
     wheelRemainder = 0;
+    if (targetTop === null) return;
+
+    event.preventDefault();
+    scrollToSection(targetTop);
     snappingUntil = now + 760;
   }, { passive: false });
 
   window.addEventListener('touchstart', (event) => {
-    touchStartY = event.touches[0]?.clientY ?? null;
+    touchStartY = canSnap() ? event.touches[0]?.clientY ?? null : null;
   }, { passive: true });
 
   window.addEventListener('touchend', (event) => {
-    if (touchStartY === null || root.classList.contains('is-mobile-menu-open')) return;
+    if (touchStartY === null || !canSnap()) return;
 
     const endY = event.changedTouches[0]?.clientY ?? touchStartY;
     const deltaY = touchStartY - endY;
     touchStartY = null;
     if (Math.abs(deltaY) < 54) return;
 
-    const points = getSnapPoints();
-    scrollToSnapIndex(getSnapIndexForDirection(deltaY > 0 ? 1 : -1, points), points);
+    const targetTop = getSectionSnapTarget(deltaY > 0 ? 1 : -1);
+    if (targetTop !== null) scrollToSection(targetTop);
   }, { passive: true });
 
   window.addEventListener('keydown', (event) => {
     const target = event.target;
     const isTyping = target instanceof HTMLElement && target.matches('input, textarea, select, [contenteditable="true"]');
-    if (isTyping || root.classList.contains('is-mobile-menu-open')) return;
+    if (isTyping || !canSnap()) return;
 
     const forwardKeys = ['ArrowDown', 'PageDown'];
     const backwardKeys = ['ArrowUp', 'PageUp'];
@@ -800,15 +792,12 @@ function bindSectionSnap() {
         : 0;
 
     if (direction === 0) return;
+
+    const targetTop = getSectionSnapTarget(direction);
+    if (targetTop === null) return;
+
     event.preventDefault();
-
-    const points = getSnapPoints();
-    scrollToSnapIndex(getSnapIndexForDirection(direction, points), points);
-  });
-
-  window.addEventListener('resize', () => {
-    const points = getSnapPoints();
-    scrollToSnapIndex(getNearestSnapIndex(points), points);
+    scrollToSection(targetTop);
   });
 }
 

@@ -128,8 +128,6 @@ html {
   overflow-x: hidden;
   scroll-behavior: smooth;
   scroll-padding-top: var(--ouro-hero-top, 72px);
-  scroll-snap-type: y mandatory;
-  overscroll-behavior-y: contain;
 }
 
 body {
@@ -137,7 +135,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   scroll-padding-top: var(--ouro-hero-top, 72px);
-  scroll-snap-type: y mandatory;
 }
 
 .ouro-display {
@@ -192,8 +189,6 @@ body {
   flex-direction: column;
   justify-content: center;
   position: relative;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 .ouro-page-section + .ouro-page-section {
@@ -1500,11 +1495,6 @@ body {
       transform: translateY(1px);
     }
 
-    .ouro-boundary-wave.ouro-wave-top {
-      top: -14px;
-      transform: none;
-    }
-
     .ouro-boundary-wave.ouro-wave-bottom {
       bottom: -14px;
       transform: none;
@@ -2114,10 +2104,6 @@ body {
 
       .ouro-boundary-wave {
         height: 92px;
-      }
-
-      .ouro-boundary-wave.ouro-wave-top {
-        top: -10px;
       }
 
       .ouro-boundary-wave.ouro-wave-bottom {
