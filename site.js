@@ -942,7 +942,7 @@ function updateWaves() {
     item.wave.style.setProperty('--ouro-wave-rise', `${((1 - reveal) * 100).toFixed(2)}%`);
     if (mobileMode) {
       const mobileWaveHeight = 240;
-      const mobileWaveOvershoot = 128;
+      const mobileWaveOvershoot = 104;
       const waveTop = scrollTop + window.innerHeight + mobileWaveOvershoot
         - mobileWaveHeight - item.section.offsetTop;
       item.wave.style.setProperty('--ouro-wave-top', `${waveTop.toFixed(2)}px`);
