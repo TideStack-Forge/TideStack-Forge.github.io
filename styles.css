@@ -1896,6 +1896,10 @@ body {
       padding-right: 24px;
     }
 
+    .ouro-hero-content {
+      transform: translateY(-72px);
+    }
+
     .ouro-loop-path {
       fill: none;
       stroke: var(--ouro-primary);
