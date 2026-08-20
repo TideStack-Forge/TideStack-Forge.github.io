@@ -818,13 +818,13 @@ function getWaveReveal(section, scrollTop) {
   return smoothStep(1 - clamp(distance / revealDistance, 0, 1));
 }
 
-function buildWavePath({ isBottom, seed }, scrollProgress, transitionProgress, flowProgress, flowPhase) {
+function buildWavePath({ isBottom, seed, phaseOffset = 0 }, scrollProgress, transitionProgress, flowProgress, flowPhase) {
   const xs = [0, 180, 360, 540, 720, 900, 1080, 1260, 1440];
   const waveFrequency = Math.PI * 4;
   const baseY = isBottom ? 58 : 54;
   const restAmplitude = isBottom ? 20 : 18;
   const amplitudeScale = 0.92 + Math.sin(seed * 1.9) * 0.08;
-  const phase = seed * 0.08
+  const phase = phaseOffset + seed * 0.08
     + Math.sin(scrollProgress * Math.PI * 2 + seed) * 0.18 * transitionProgress
     + flowPhase * 0.72 * flowProgress
     + Math.sin(flowPhase * 0.75 + seed * 0.4) * 0.08 * flowProgress;
@@ -881,11 +881,11 @@ function updateWaves() {
       item.backPath.setAttribute(
         'd',
         buildWavePath(
-          { ...item, seed: item.seed + 0.48 },
+          { ...item, seed: item.seed + 0.48, phaseOffset: Math.PI * 0.62 },
           scrollProgress,
           pathProgress * 0.72,
           flowProgress,
-          flowPhase * 0.78,
+          flowPhase,
         ),
       );
     }

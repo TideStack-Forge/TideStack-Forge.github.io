@@ -1492,7 +1492,7 @@ body {
     .ouro-boundary-wave .ouro-wave-back {
       fill: color-mix(in srgb, var(--ouro-primary) 16%, var(--ouro-surface)) !important;
       opacity: 0.58;
-      transform: translate3d(var(--ouro-wave-back-x), -9px, 0) scale(1.065, 1.06);
+      transform: translate3d(var(--ouro-wave-back-x), -14px, 0) scale(1.065, 1.06);
     }
 
     .ouro-wave-top {
