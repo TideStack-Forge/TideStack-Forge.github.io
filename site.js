@@ -138,7 +138,7 @@ const translations = {
       'capability-6-title': '版本与治理',
       'capability-6-body': '统一管理模型、权限、版本和变更',
       'opensource h2': '开放，从开源开始',
-      'opensource p': '潮汐栈的核心组件已逐一开源。你可以按需选择其中一个组件接入现有体系，而不必完整采用整个平台。',
+      'opensource p': '潮汐栈的核心组件正在逐一开源。你可以按需选择其中一个组件接入现有体系，而不必完整采用整个平台。',
       'source-1-title': '动态数据模型',
       'source-1-body': '声明式定义数据模型与关系，运行时即时生效的核心引擎。',
       'source-2-title': '逻辑流模型',
