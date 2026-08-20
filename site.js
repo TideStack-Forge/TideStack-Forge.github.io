@@ -821,7 +821,8 @@ function buildWavePath({ isBottom, seed }, scrollProgress, transitionProgress, f
   const amplitudeScale = 0.92 + Math.sin(seed * 1.9) * 0.08;
   const phase = seed * 0.08
     + Math.sin(scrollProgress * Math.PI * 2 + seed) * 0.18 * transitionProgress
-    + Math.sin(flowPhase * 0.75 + seed * 0.4) * 0.18 * flowProgress;
+    + flowPhase * 0.72 * flowProgress
+    + Math.sin(flowPhase * 0.75 + seed * 0.4) * 0.08 * flowProgress;
   const drift = Math.sin(scrollProgress * Math.PI * 1.4 + seed) * 3;
   const points = xs.map((x) => {
     const progress = x / 1440;
