@@ -676,12 +676,17 @@ const waves = Array.from(document.querySelectorAll('.ouro-wave:not(.ouro-footer-
 const boundaryWaves = Array.from(document.querySelectorAll('.ouro-boundary-wave'))
   .map((wave, index) => ({
     wave,
-    path: wave.querySelector('path'),
+    path: wave.querySelector('path:not(.ouro-wave-back)'),
+    backPath: wave.querySelector('.ouro-wave-back'),
     section: wave.closest('.ouro-page-section'),
     isBottom: wave.classList.contains('ouro-wave-bottom'),
     seed: index * 0.64,
   }))
   .filter((item) => item.path && item.section);
+
+boundaryWaves.forEach(({ wave, path, backPath }) => {
+  if (backPath) wave.insertBefore(backPath, path);
+});
 const sectionLinks = Array.from(document.querySelectorAll('[data-section-dot][href^="#"]'));
 const sections = sectionLinks
   .map((link) => document.querySelector(link.getAttribute('href')))
@@ -870,6 +875,20 @@ function updateWaves() {
     item.wave.style.setProperty('--ouro-wave-x', `${x.toFixed(2)}px`);
     item.wave.style.setProperty('--ouro-wave-y', '0px');
     item.path.setAttribute('d', buildWavePath(item, scrollProgress, pathProgress, flowProgress, flowPhase));
+    if (item.backPath) {
+      const backX = Math.sin(scrollProgress * Math.PI * 2.1 + index * 0.76) * 3.5 * transitionProgress * direction;
+      item.wave.style.setProperty('--ouro-wave-back-x', `${backX.toFixed(2)}px`);
+      item.backPath.setAttribute(
+        'd',
+        buildWavePath(
+          { ...item, seed: item.seed + 0.48 },
+          scrollProgress,
+          pathProgress * 0.72,
+          flowProgress,
+          flowPhase * 0.78,
+        ),
+      );
+    }
     hasFlowingWave ||= desktopWaveQuery.matches && reveal > 0;
   });
 

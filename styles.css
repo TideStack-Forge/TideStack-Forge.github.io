@@ -1464,6 +1464,7 @@ body {
       overflow: visible;
       --ouro-wave-x: 0px;
       --ouro-wave-y: 0px;
+      --ouro-wave-back-x: 0px;
     }
 
     .ouro-wave path {
@@ -1486,6 +1487,12 @@ body {
     .ouro-boundary-wave path {
       fill: color-mix(in srgb, var(--ouro-primary) 24%, var(--ouro-surface)) !important;
       transform: translate3d(var(--ouro-wave-x), var(--ouro-wave-y), 0) scale(1.08, 1.16);
+    }
+
+    .ouro-boundary-wave .ouro-wave-back {
+      fill: color-mix(in srgb, var(--ouro-primary) 16%, var(--ouro-surface)) !important;
+      opacity: 0.58;
+      transform: translate3d(var(--ouro-wave-back-x), -9px, 0) scale(1.065, 1.06);
     }
 
     .ouro-wave-top {
