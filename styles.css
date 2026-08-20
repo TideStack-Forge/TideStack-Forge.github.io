@@ -53,7 +53,7 @@
   --ouro-nav-background: rgba(248, 250, 252, 0.88);
   --ouro-life-card-start: var(--ouro-white);
   --ouro-life-card-end: var(--ouro-neutral-50);
-  --ouro-footer-bg: var(--ouro-neutral-900);
+  --ouro-footer-bg: #092f4a;
   --ouro-footer-ink: var(--ouro-neutral-50);
   --ouro-footer-muted: var(--ouro-neutral-400);
   --ouro-footer-line: rgba(148, 163, 184, 0.15);
@@ -1547,6 +1547,18 @@ body {
 
     .ouro-footer-wave path {
       transform: scale(1.04, 1.08);
+    }
+
+    .ouro-footer-wave .ouro-footer-wave-back {
+      fill: color-mix(in srgb, var(--ouro-cyan-500) 52%, var(--ouro-footer-bg)) !important;
+      opacity: 0.86;
+      transform: translate3d(-18px, -18px, 0) scale(1.08, 1.06);
+    }
+
+    .dark .ouro-footer-wave .ouro-footer-wave-back,
+    [data-theme="dark"] .ouro-footer-wave .ouro-footer-wave-back {
+      fill: color-mix(in srgb, var(--ouro-primary) 22%, var(--ouro-footer-bg)) !important;
+      opacity: 0.7;
     }
 
     .ouro-footer-content {
