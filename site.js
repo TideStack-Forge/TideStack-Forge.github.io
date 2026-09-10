@@ -482,9 +482,9 @@ const textTargets = {
   'footer-resource-changelog': 'footer .grid > div:nth-of-type(4) li:nth-of-type(2) a',
   'footer-resource-community': 'footer .grid > div:nth-of-type(4) li:nth-of-type(3) a',
   'footer-copyright': 'footer .border-t > p',
-  'footer-privacy': 'footer .border-t a:nth-of-type(1)',
-  'footer-terms': 'footer .border-t a:nth-of-type(2)',
-  'footer-github .btn-label': 'footer .border-t a:nth-of-type(3) .btn-label',
+  'footer-privacy': '[data-dom-id="footer-privacy"]',
+  'footer-terms': '[data-dom-id="footer-terms"]',
+  'footer-github .btn-label': '[data-dom-id="footer-github"] .btn-label',
 };
 
 function getStoredValue(key) {
