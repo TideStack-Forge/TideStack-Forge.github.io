@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="潮汐栈架构以模型资产为核心，连接开发平台、运行时基座和运维治理。">
+  <meta name="description" content="以业务模型为语义中心，了解潮汐栈开发平台、运行时基座、模型投影与扩展机制，以及生产交付边界。">
   <title>架构 — 潮汐栈</title>
   <link rel="icon" href="assets/tidestack-logo.svg" type="image/svg+xml">
   <script>
@@ -26,8 +26,8 @@
       }
     })();
   </script>
-  <link rel="stylesheet" href="styles.css?v=20261112a">
-  <script src="site.js?v=20261112a" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261114c">
+  <script src="site.js?v=20261114d" defer></script>
   <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js" defer onload="window.tidestackRefreshIcons && window.tidestackRefreshIcons()"></script>
 </head>
 <body>
@@ -46,25 +46,261 @@
       <div class="ouro-desktop-actions items-center gap-4">
         <button type="button" class="ouro-icon-button" data-theme-toggle aria-label="切换到暗色模式" title="切换到暗色模式"><i data-lucide="moon" class="theme-icon theme-icon-dark w-4 h-4" aria-hidden="true"></i><i data-lucide="sun" class="theme-icon theme-icon-light w-4 h-4" aria-hidden="true"></i></button>
         <div class="ouro-locale-switch" role="group" aria-label="语言切换"><button type="button" class="ouro-locale-button" data-locale-option="zh" aria-pressed="true">中</button><button type="button" class="ouro-locale-button" data-locale-option="en" aria-pressed="false">EN</button></div>
-        <a href="https://tidestackforge.com/" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink-2);" data-dom-id="nav-docs" data-i18n="nav-docs">文档</a>
+        <a href="/dev-docs/" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink-2);" data-dom-id="nav-docs" data-i18n="nav-docs">文档</a>
         <a href="https://github.com/TideStack-Forge" target="_blank" rel="noopener noreferrer" class="ouro-nav-link text-sm font-medium inline-flex items-center gap-1" style="color: var(--ouro-ink-2);" data-dom-id="nav-github"><span class="nav-link-label">GitHub</span><i data-lucide="external-link" class="w-3 h-3" aria-hidden="true"></i></a>
-        <a href="https://tidestackforge.com/docs/getting-started/" class="ouro-btn-primary text-sm" data-dom-id="nav-cta" data-i18n="nav-cta">快速开始</a>
+        <a href="/dev-docs/docs/getting-started/" class="ouro-btn-primary text-sm" data-dom-id="nav-cta" data-i18n="nav-cta">快速开始</a>
       </div>
       <div class="ouro-mobile-actions" aria-label="移动端站点控制"><button type="button" class="ouro-icon-button" data-theme-toggle aria-label="切换到暗色模式" title="切换到暗色模式"><i data-lucide="moon" class="theme-icon theme-icon-dark w-4 h-4" aria-hidden="true"></i><i data-lucide="sun" class="theme-icon theme-icon-light w-4 h-4" aria-hidden="true"></i></button><div class="ouro-locale-switch" role="group" aria-label="语言切换"><button type="button" class="ouro-locale-button" data-locale-option="zh" aria-pressed="true">中</button><button type="button" class="ouro-locale-button" data-locale-option="en" aria-pressed="false">EN</button></div><button type="button" class="ouro-mobile-menu-button" data-mobile-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="打开导航菜单"><i data-lucide="menu" class="menu-icon-open w-5 h-5" aria-hidden="true"></i><i data-lucide="x" class="menu-icon-close w-5 h-5" aria-hidden="true"></i></button></div>
     </div>
     <div class="ouro-mobile-menu" id="mobile-menu" data-mobile-menu hidden>
       <div class="ouro-container">
         <div class="ouro-mobile-menu-links"><a href="index.html" data-i18n="nav-home">首页</a><a href="architecture.html" data-i18n="nav-architecture" aria-current="page">架构</a><a href="features.html" data-i18n="nav-features">特性</a><a href="roadmap.html" data-i18n="nav-roadmap">路线图</a></div>
-        <div class="ouro-mobile-menu-controls"><div class="ouro-mobile-menu-secondary-links"><a href="https://tidestackforge.com/" data-i18n="nav-docs">文档</a><a href="https://github.com/TideStack-Forge" target="_blank" rel="noopener noreferrer"><span>GitHub</span><i data-lucide="external-link" class="w-3 h-3" aria-hidden="true"></i></a></div><a href="https://tidestackforge.com/docs/getting-started/" class="ouro-btn-primary text-sm" data-i18n="nav-cta">快速开始</a></div>
+        <div class="ouro-mobile-menu-controls"><div class="ouro-mobile-menu-secondary-links"><a href="/dev-docs/" data-i18n="nav-docs">文档</a><a href="https://github.com/TideStack-Forge" target="_blank" rel="noopener noreferrer"><span>GitHub</span><i data-lucide="external-link" class="w-3 h-3" aria-hidden="true"></i></a></div><a href="/dev-docs/docs/getting-started/" class="ouro-btn-primary text-sm" data-i18n="nav-cta">快速开始</a></div>
       </div>
     </div>
   </nav>
-  <main class="ouro-standalone-page">
+  <main class="ouro-detail-page">
     <div class="ouro-container">
-      <section class="ouro-standalone-panel">
-        <h1 class="ouro-h1 mb-6" style="color: var(--ouro-ink);" data-i18n="standalone-architecture-title">架构</h1>
-        <p class="ouro-body-lg" style="color: var(--ouro-ink-2);" data-i18n="standalone-architecture-copy">以模型资产为中心，开发平台、运行时基座和运维治理沿同一套标准件协同工作。</p>
+      <header class="ouro-detail-hero">
+        <p data-i18n="arch-eyebrow" class="ouro-detail-eyebrow">架构 / ARCHITECTURE</p>
+        <h1 data-i18n="standalone-architecture-title" class="ouro-h1">一套模型契约，连接开发与运行</h1>
+        <p data-i18n="standalone-architecture-copy" class="ouro-body-lg">开发平台维护模型、界面与代码扩展，测试环境验证应用，目标环境中的统一运行时基座负责实际运行。从整体协作到模型装配，了解各部分如何连接、由谁执行。</p>
+      </header>
+      <nav class="ouro-detail-nav" aria-label="架构章节" data-i18n-aria-label="arch-contents-label">
+        <a data-i18n="arch-nav-arch-collaboration" href="#arch-collaboration">整体协作</a>
+        <a data-i18n="arch-nav-arch-platform" href="#arch-platform">开发平台</a>
+        <a data-i18n="arch-nav-arch-runtime" href="#arch-runtime">运行时基座</a>
+        <a data-i18n="arch-nav-arch-models" href="#arch-models">模型装配</a>
+        <a data-i18n="arch-nav-arch-requests" href="#arch-requests">请求执行</a>
+        <a data-i18n="arch-nav-arch-deployment" href="#arch-deployment">部署与隔离</a>
+      </nav>
+      <section class="ouro-detail-section" id="arch-collaboration" aria-labelledby="arch-collaboration-title">
+        <header class="ouro-detail-heading">
+          <span class="ouro-detail-number" aria-hidden="true">01</span>
+          <div>
+            <h2 data-i18n="arch-collaboration-title" id="arch-collaboration-title">开发、验证与部署，职责各自清楚</h2>
+            <p data-i18n="arch-collaboration-intro">开发平台本身也复用统一运行时基座。交付后的应用由目标环境独立加载运行，后续开发继续在开发平台完成。</p>
+          </div>
+        </header>
+        <figure class="ouro-detail-figure" aria-labelledby="arch-collaboration-figure-caption">
+          <a class="ouro-figure-image" href="assets/handbook/system-collaboration.svg" target="_blank" rel="noopener noreferrer" aria-labelledby="arch-collaboration-figure-caption">
+            <img src="assets/handbook/system-collaboration.svg" alt="" width="1500" height="1108" loading="lazy" decoding="async">
+          </a>
+          <figcaption id="arch-collaboration-figure-caption">
+            <span data-i18n="arch-collaboration-figure-caption">开发者 IDE、开发平台、开发助手、测试环境与应用部署环境的协作关系</span>
+            <a data-i18n="arch-collaboration-figure-open" href="assets/handbook/system-collaboration.svg" target="_blank" rel="noopener noreferrer">查看完整架构图</a>
+          </figcaption>
+        </figure>
+        <div class="ouro-detail-grid">
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-collaboration-card-0-title">开发平台</h3>
+            <p data-i18n="arch-collaboration-card-0-body">在线编辑模型与界面资源，管理应用工作区和版本，创建开发助手与测试运行环境。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-collaboration-card-1-title">开发助手与测试环境</h3>
+            <p data-i18n="arch-collaboration-card-1-body">开发助手发现代码扩展中的元数据；测试环境加载当前应用，回传运行日志与状态，供开发者联调验证。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-collaboration-card-2-title">应用部署环境</h3>
+            <p data-i18n="arch-collaboration-card-2-body">目标基座装配已交付的模型与扩展，使用独立的配置、访问入口和业务数据处理请求。</p>
+          </article>
+        </div>
+        <a data-i18n="arch-collaboration-doc" class="ouro-detail-link" href="/dev-docs/docs/concepts/architecture/#整体组成与职责边界">阅读完整协作说明 →</a>
       </section>
+      <section class="ouro-detail-section" id="arch-platform" aria-labelledby="arch-platform-title">
+        <header class="ouro-detail-heading">
+          <span class="ouro-detail-number" aria-hidden="true">02</span>
+          <div>
+            <h2 data-i18n="arch-platform-title" id="arch-platform-title">开发平台：围绕应用工作区组织开发</h2>
+            <p data-i18n="arch-platform-intro">建模界面、模型开发服务、应用管理和运行管理协作，保存业务定义、扩展依赖、界面资源及版本内容。</p>
+          </div>
+        </header>
+        <figure class="ouro-detail-figure" aria-labelledby="arch-platform-figure-caption">
+          <a class="ouro-figure-image" href="assets/handbook/platform-architecture.svg" target="_blank" rel="noopener noreferrer" aria-labelledby="arch-platform-figure-caption">
+            <img src="assets/handbook/platform-architecture.svg" alt="" width="1440" height="1956" loading="lazy" decoding="async">
+          </a>
+          <figcaption id="arch-platform-figure-caption">
+            <span data-i18n="arch-platform-figure-caption">开发平台总体架构：开发界面、模型开发服务、应用工作区与运行资源</span>
+            <a data-i18n="arch-platform-figure-open" href="assets/handbook/platform-architecture.svg" target="_blank" rel="noopener noreferrer">查看完整架构图</a>
+          </figcaption>
+        </figure>
+        <div class="ouro-detail-grid">
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-platform-card-0-title">模型设计与校验</h3>
+            <p data-i18n="arch-platform-card-0-body">业务模型、页面、逻辑流与审批流使用各自的编辑器和模型契约；动作、事件与订阅可查看定义来源和实现绑定。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-platform-card-1-title">应用与资源管理</h3>
+            <p data-i18n="arch-platform-card-1-body">应用、版本、后端扩展包、模块树、内置角色和岗位随应用组织；数据源与平台组件库等资源供应用按需引用。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-platform-card-2-title">运行与联调</h3>
+            <p data-i18n="arch-platform-card-2-body">通过 Docker 或 Kubernetes 调试后端管理开发助手与测试实例，启停资源并查看日志和运行状态。</p>
+          </article>
+        </div>
+        <a data-i18n="arch-platform-doc" class="ouro-detail-link" href="/dev-docs/docs/concepts/architecture/#开发平台总体架构">深入了解开发平台 →</a>
+      </section>
+      <section class="ouro-detail-section" id="arch-runtime" aria-labelledby="arch-runtime-title">
+        <header class="ouro-detail-heading">
+          <span class="ouro-detail-number" aria-hidden="true">03</span>
+          <div>
+            <h2 data-i18n="arch-runtime-title" id="arch-runtime-title">统一运行时基座：前端呈现，后端执行</h2>
+            <p data-i18n="arch-runtime-intro">前后端基座围绕同一套应用定义协作，通过 HTTP 和 WebSocket 连接。公共运行机制供开发平台和业务应用共同复用。</p>
+          </div>
+        </header>
+        <figure class="ouro-detail-figure" aria-labelledby="arch-runtime-figure-caption">
+          <a class="ouro-figure-image" href="assets/handbook/runtime-architecture.svg" target="_blank" rel="noopener noreferrer" aria-labelledby="arch-runtime-figure-caption">
+            <img src="assets/handbook/runtime-architecture.svg" alt="" width="1472" height="2704" loading="lazy" decoding="async">
+          </a>
+          <figcaption id="arch-runtime-figure-caption">
+            <span data-i18n="arch-runtime-figure-caption">统一运行时基座的前后端分工、模型引擎、公共服务与安全体系</span>
+            <a data-i18n="arch-runtime-figure-open" href="assets/handbook/runtime-architecture.svg" target="_blank" rel="noopener noreferrer">查看完整架构图</a>
+          </figcaption>
+        </figure>
+        <div class="ouro-detail-grid">
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-runtime-card-0-title">前端基座</h3>
+            <p data-i18n="arch-runtime-card-0-body">组织菜单、路由、页签与弹窗；用 PrismUI 渲染 UI Schema，承载微前端与组件包，并提供认证、请求、主题和国际化接口。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-runtime-card-1-title">后端基座</h3>
+            <p data-i18n="arch-runtime-card-1-body">装配模型与扩展，运行数据访问、业务动作、逻辑流和审批流，提供通知、任务调度、RPC 和文件等公共能力。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-runtime-card-2-title">技术与接入</h3>
+            <p data-i18n="arch-runtime-card-2-body">前端以 React 和 SDK 组织扩展，后端以 Java 21、Spring Boot 和 SPI 装配模块；数据库、缓存、消息队列与外部服务通过适配器连接。</p>
+          </article>
+        </div>
+        <div class="ouro-technical-diagrams">
+          <details>
+            <summary data-i18n="arch-frontend-details">展开前端基座技术架构</summary>
+            <figure class="ouro-detail-figure" aria-labelledby="arch-frontend-figure-caption">
+              <a class="ouro-figure-image" href="assets/handbook/frontend-architecture.svg" target="_blank" rel="noopener noreferrer" aria-labelledby="arch-frontend-figure-caption">
+                <img src="assets/handbook/frontend-architecture.svg" alt="" width="1560" height="2018" loading="lazy" decoding="async">
+              </a>
+              <figcaption id="arch-frontend-figure-caption">
+                <span data-i18n="arch-frontend-figure-caption">前端页面容器、SDK、公共服务、运行内核与构建工具</span>
+                <a data-i18n="arch-frontend-figure-open" href="assets/handbook/frontend-architecture.svg" target="_blank" rel="noopener noreferrer">查看完整架构图</a>
+              </figcaption>
+            </figure>
+          </details>
+          <details>
+            <summary data-i18n="arch-backend-details">展开后端基座技术架构</summary>
+            <figure class="ouro-detail-figure" aria-labelledby="arch-backend-figure-caption">
+              <a class="ouro-figure-image" href="assets/handbook/backend-architecture.svg" target="_blank" rel="noopener noreferrer" aria-labelledby="arch-backend-figure-caption">
+                <img src="assets/handbook/backend-architecture.svg" alt="" width="1920" height="2508" loading="lazy" decoding="async">
+              </a>
+              <figcaption id="arch-backend-figure-caption">
+                <span data-i18n="arch-backend-figure-caption">后端协议接入、业务服务、核心引擎、基础设施与安全机制</span>
+                <a data-i18n="arch-backend-figure-open" href="assets/handbook/backend-architecture.svg" target="_blank" rel="noopener noreferrer">查看完整架构图</a>
+              </figcaption>
+            </figure>
+          </details>
+        </div>
+      </section>
+      <section class="ouro-detail-section" id="arch-models" aria-labelledby="arch-models-title">
+        <header class="ouro-detail-heading">
+          <span class="ouro-detail-number" aria-hidden="true">04</span>
+          <div>
+            <h2 data-i18n="arch-models-title" id="arch-models-title">从元数据定义，到真正生效的运行模型</h2>
+            <p data-i18n="arch-models-intro">程序与插件、应用目录和支持的运行时来源提供定义。各类模型按自己的规则解析、合并或覆盖，再进入构建与注册过程。</p>
+          </div>
+        </header>
+        <figure class="ouro-detail-figure" aria-labelledby="arch-models-figure-caption">
+          <a class="ouro-figure-image" href="assets/handbook/metadata-assembly.svg" target="_blank" rel="noopener noreferrer" aria-labelledby="arch-models-figure-caption">
+            <img src="assets/handbook/metadata-assembly.svg" alt="" width="1600" height="1148" loading="lazy" decoding="async">
+          </a>
+          <figcaption id="arch-models-figure-caption">
+            <span data-i18n="arch-models-figure-caption">定义来源、同名解析、业务模型投射与模型构建的装配过程</span>
+            <a data-i18n="arch-models-figure-open" href="assets/handbook/metadata-assembly.svg" target="_blank" rel="noopener noreferrer">查看完整架构图</a>
+          </figcaption>
+        </figure>
+        <div class="ouro-detail-grid">
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-models-card-0-title">业务语义投影</h3>
+            <p data-i18n="arch-models-card-0-body">业务模型投射数据、页面、接口和权限等定义；投射结果继续进入目标模型的正式装配流程，目标模型保留自己的契约。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-models-card-1-title">分层定制</h3>
+            <p data-i18n="arch-models-card-1-body">产品基础与应用差异分别保存。模块树可合并菜单与权限引用，UI Schema 则选择高优先级的完整定义，具体取舍由模型类型决定。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-models-card-2-title">生效与刷新</h3>
+            <p data-i18n="arch-models-card-2-body">模型构建后注册页面路由、接口和执行契约。变更按对应模型的刷新或重启要求生效，应用资源与模型运行时各司其职。</p>
+          </article>
+        </div>
+        <a data-i18n="arch-models-doc" class="ouro-detail-link" href="/dev-docs/docs/concepts/architecture/#元数据装配与模型生效">了解模型装配与覆盖规则 →</a>
+      </section>
+      <section class="ouro-detail-section" id="arch-requests" aria-labelledby="arch-requests-title">
+        <header class="ouro-detail-heading">
+          <span class="ouro-detail-number" aria-hidden="true">05</span>
+          <div>
+            <h2 data-i18n="arch-requests-title" id="arch-requests-title">一次业务请求，如何走到数据与执行引擎</h2>
+            <p data-i18n="arch-requests-intro">UI 模型决定页面入口，UI Schema 描述内容与交互。WebAPI 按契约分派业务请求，逻辑流或代码实现具体处理，再通过数据模型访问数据。</p>
+          </div>
+        </header>
+        <figure class="ouro-detail-figure" aria-labelledby="arch-requests-figure-caption">
+          <a class="ouro-figure-image" href="assets/handbook/application-request.svg" target="_blank" rel="noopener noreferrer" aria-labelledby="arch-requests-figure-caption">
+            <img src="assets/handbook/application-request.svg" alt="" width="1400" height="1358" loading="lazy" decoding="async">
+          </a>
+          <figcaption id="arch-requests-figure-caption">
+            <span data-i18n="arch-requests-figure-caption">页面加载、接口分派、业务动作、逻辑流与数据访问的协作时序</span>
+            <a data-i18n="arch-requests-figure-open" href="assets/handbook/application-request.svg" target="_blank" rel="noopener noreferrer">查看完整架构图</a>
+          </figcaption>
+        </figure>
+        <div class="ouro-detail-grid">
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-requests-card-0-title">动作执行</h3>
+            <p data-i18n="arch-requests-card-0-body">业务动作声明输入、输出和权限，由统一运行时进行校验与事务处理，再调用逻辑流或 Handler 实现。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-requests-card-1-title">事件与订阅</h3>
+            <p data-i18n="arch-requests-card-1-body">业务事件保存已经发生的事实，订阅通过 Outbox 机制至少一次投递；失败交付可诊断和显式重驱，消费逻辑需要处理重复投递。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-requests-card-2-title">访问控制</h3>
+            <p data-i18n="arch-requests-card-2-body">菜单、页面、接口与数据访问分别受权限约束。后端继续校验身份、角色和凭据授权，数据模型执行行级条件与字段范围。</p>
+          </article>
+        </div>
+        <a data-i18n="arch-requests-doc" class="ouro-detail-link" href="/dev-docs/docs/concepts/architecture/#应用运行与访问控制">查看请求执行与访问控制 →</a>
+      </section>
+      <section class="ouro-detail-section" id="arch-deployment" aria-labelledby="arch-deployment-title">
+        <header class="ouro-detail-heading">
+          <span class="ouro-detail-number" aria-hidden="true">06</span>
+          <div>
+            <h2 data-i18n="arch-deployment-title" id="arch-deployment-title">部署应用，也要分清环境与资产边界</h2>
+            <p data-i18n="arch-deployment-intro">开发环境保存工作区与平台管理数据，应用运行环境保存自己的定义、配置和业务数据。实例可以重建，需要保留的数据应独立持久化。</p>
+          </div>
+        </header>
+        <figure class="ouro-detail-figure" aria-labelledby="arch-deployment-figure-caption">
+          <a class="ouro-figure-image" href="assets/handbook/deployment-isolation.svg" target="_blank" rel="noopener noreferrer" aria-labelledby="arch-deployment-figure-caption">
+            <img src="assets/handbook/deployment-isolation.svg" alt="" width="1600" height="1298" loading="lazy" decoding="async">
+          </a>
+          <figcaption id="arch-deployment-figure-caption">
+            <span data-i18n="arch-deployment-figure-caption">开发与运行环境、部署载体、存储和访问入口的边界</span>
+            <a data-i18n="arch-deployment-figure-open" href="assets/handbook/deployment-isolation.svg" target="_blank" rel="noopener noreferrer">查看完整架构图</a>
+          </figcaption>
+        </figure>
+        <div class="ouro-detail-grid">
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-deployment-card-0-title">环境隔离</h3>
+            <p data-i18n="arch-deployment-card-0-body">开发、测试和生产分别管理入口、凭据、数据源与持久化目录；应用元数据、日志、上传文件和数据库按用途保存。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-deployment-card-1-title">部署形态</h3>
+            <p data-i18n="arch-deployment-card-1-body">原生、容器与云原生形态承载相同的应用定义和基座。仓库提供镜像与 Compose 安装材料，集群安装清单按目标环境准备。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="arch-deployment-card-2-title">交付衔接</h3>
+            <p data-i18n="arch-deployment-card-2-body">版本管理保存已验证的模型与代码组合。生产部署、发布和恢复衔接团队已有流程，数据变更另行管理；独立运维平台仍在规划中。</p>
+          </article>
+        </div>
+        <a data-i18n="arch-deployment-doc" class="ouro-detail-link" href="/dev-docs/docs/operations/">阅读部署与运维手册 →</a>
+      </section>
+      <div class="ouro-detail-next">
+        <div data-i18n="arch-next-copy">了解这些机制能构建哪些具体功能。</div>
+        <a data-i18n="arch-next" class="ouro-btn-primary" href="features.html">查看平台特性 →</a>
+      </div>
     </div>
   </main>
 </body>

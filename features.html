@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="潮汐栈围绕 AI 协同、动态模型、界面与 API 生成、工作流、微前端和资产治理提供企业开发能力。">
+  <meta name="description" content="用业务模型组织数据、页面、接口、流程与权限，让模型、代码与 AI 协同构建应用，并持续积累可复用资产。">
   <title>特性 — 潮汐栈</title>
   <link rel="icon" href="assets/tidestack-logo.svg" type="image/svg+xml">
   <script>
@@ -26,8 +26,8 @@
       }
     })();
   </script>
-  <link rel="stylesheet" href="styles.css?v=20261112a">
-  <script src="site.js?v=20261112a" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261114c">
+  <script src="site.js?v=20261114d" defer></script>
   <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js" defer onload="window.tidestackRefreshIcons && window.tidestackRefreshIcons()"></script>
 </head>
 <body>
@@ -46,25 +46,338 @@
       <div class="ouro-desktop-actions items-center gap-4">
         <button type="button" class="ouro-icon-button" data-theme-toggle aria-label="切换到暗色模式" title="切换到暗色模式"><i data-lucide="moon" class="theme-icon theme-icon-dark w-4 h-4" aria-hidden="true"></i><i data-lucide="sun" class="theme-icon theme-icon-light w-4 h-4" aria-hidden="true"></i></button>
         <div class="ouro-locale-switch" role="group" aria-label="语言切换"><button type="button" class="ouro-locale-button" data-locale-option="zh" aria-pressed="true">中</button><button type="button" class="ouro-locale-button" data-locale-option="en" aria-pressed="false">EN</button></div>
-        <a href="https://tidestackforge.com/" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink-2);" data-dom-id="nav-docs" data-i18n="nav-docs">文档</a>
+        <a href="/dev-docs/" class="ouro-nav-link text-sm font-medium" style="color: var(--ouro-ink-2);" data-dom-id="nav-docs" data-i18n="nav-docs">文档</a>
         <a href="https://github.com/TideStack-Forge" target="_blank" rel="noopener noreferrer" class="ouro-nav-link text-sm font-medium inline-flex items-center gap-1" style="color: var(--ouro-ink-2);" data-dom-id="nav-github"><span class="nav-link-label">GitHub</span><i data-lucide="external-link" class="w-3 h-3" aria-hidden="true"></i></a>
-        <a href="https://tidestackforge.com/docs/getting-started/" class="ouro-btn-primary text-sm" data-dom-id="nav-cta" data-i18n="nav-cta">快速开始</a>
+        <a href="/dev-docs/docs/getting-started/" class="ouro-btn-primary text-sm" data-dom-id="nav-cta" data-i18n="nav-cta">快速开始</a>
       </div>
       <div class="ouro-mobile-actions" aria-label="移动端站点控制"><button type="button" class="ouro-icon-button" data-theme-toggle aria-label="切换到暗色模式" title="切换到暗色模式"><i data-lucide="moon" class="theme-icon theme-icon-dark w-4 h-4" aria-hidden="true"></i><i data-lucide="sun" class="theme-icon theme-icon-light w-4 h-4" aria-hidden="true"></i></button><div class="ouro-locale-switch" role="group" aria-label="语言切换"><button type="button" class="ouro-locale-button" data-locale-option="zh" aria-pressed="true">中</button><button type="button" class="ouro-locale-button" data-locale-option="en" aria-pressed="false">EN</button></div><button type="button" class="ouro-mobile-menu-button" data-mobile-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="打开导航菜单"><i data-lucide="menu" class="menu-icon-open w-5 h-5" aria-hidden="true"></i><i data-lucide="x" class="menu-icon-close w-5 h-5" aria-hidden="true"></i></button></div>
     </div>
     <div class="ouro-mobile-menu" id="mobile-menu" data-mobile-menu hidden>
       <div class="ouro-container">
         <div class="ouro-mobile-menu-links"><a href="index.html" data-i18n="nav-home">首页</a><a href="architecture.html" data-i18n="nav-architecture">架构</a><a href="features.html" data-i18n="nav-features" aria-current="page">特性</a><a href="roadmap.html" data-i18n="nav-roadmap">路线图</a></div>
-        <div class="ouro-mobile-menu-controls"><div class="ouro-mobile-menu-secondary-links"><a href="https://tidestackforge.com/" data-i18n="nav-docs">文档</a><a href="https://github.com/TideStack-Forge" target="_blank" rel="noopener noreferrer"><span>GitHub</span><i data-lucide="external-link" class="w-3 h-3" aria-hidden="true"></i></a></div><a href="https://tidestackforge.com/docs/getting-started/" class="ouro-btn-primary text-sm" data-i18n="nav-cta">快速开始</a></div>
+        <div class="ouro-mobile-menu-controls"><div class="ouro-mobile-menu-secondary-links"><a href="/dev-docs/" data-i18n="nav-docs">文档</a><a href="https://github.com/TideStack-Forge" target="_blank" rel="noopener noreferrer"><span>GitHub</span><i data-lucide="external-link" class="w-3 h-3" aria-hidden="true"></i></a></div><a href="/dev-docs/docs/getting-started/" class="ouro-btn-primary text-sm" data-i18n="nav-cta">快速开始</a></div>
       </div>
     </div>
   </nav>
-  <main class="ouro-standalone-page">
+  <main class="ouro-detail-page">
     <div class="ouro-container">
-      <section class="ouro-standalone-panel">
-        <h1 class="ouro-h1 mb-6" style="color: var(--ouro-ink);" data-i18n="standalone-features-title">特性</h1>
-        <p class="ouro-body-lg" style="color: var(--ouro-ink-2);" data-i18n="standalone-features-copy">从 AI 协同开发到动态模型、生成式界面与 API、工作流编排、微前端组装和资产治理，潮汐栈把企业应用交付拆成可组合的能力。</p>
+      <header class="ouro-detail-hero">
+        <p data-i18n="feat-eyebrow" class="ouro-detail-eyebrow">特性 / FEATURES</p>
+        <h1 data-i18n="standalone-features-title" class="ouro-h1">围绕业务模型，构建完整应用</h1>
+        <p data-i18n="standalone-features-copy" class="ouro-body-lg">定义订单与客户，配置列表和表单，编排审核与通知，连接 ERP，再为不同角色设置访问范围。模型、配置和代码在同一应用中配合，AI 参与分析、实现与检查。</p>
+      </header>
+      <nav class="ouro-detail-nav" aria-label="特性章节" data-i18n-aria-label="feat-contents-label">
+        <a data-i18n="feat-nav-feat-models" href="#feat-models">业务与数据</a>
+        <a data-i18n="feat-nav-feat-pages" href="#feat-pages">界面与交互</a>
+        <a data-i18n="feat-nav-feat-flows" href="#feat-flows">逻辑流</a>
+        <a data-i18n="feat-nav-feat-approval" href="#feat-approval">审批流</a>
+        <a data-i18n="feat-nav-feat-integration" href="#feat-integration">集成与自动化</a>
+        <a data-i18n="feat-nav-feat-feedback" href="#feat-feedback">通知与实时反馈</a>
+        <a data-i18n="feat-nav-feat-permissions" href="#feat-permissions">权限与组织</a>
+        <a data-i18n="feat-nav-feat-development" href="#feat-development">开发与交付</a>
+        <a data-i18n="feat-nav-feat-example" href="#feat-example">组合示例</a>
+      </nav>
+      <section class="ouro-detail-section" id="feat-models" aria-labelledby="feat-models-title">
+        <header class="ouro-detail-heading">
+          <span class="ouro-detail-number" aria-hidden="true">01</span>
+          <div>
+            <h2 data-i18n="feat-models-title" id="feat-models-title">定义业务对象，连起字段、关系和操作</h2>
+            <p data-i18n="feat-models-intro">从订单、客户、合同等业务对象开始，在一处维护字段含义、对象关系、页面视图、业务动作和访问规则。</p>
+          </div>
+        </header>
+        <figure class="ouro-detail-figure ouro-product-shot" aria-labelledby="feat-models-figure-caption">
+          <a class="ouro-figure-image" href="assets/handbook/business-model.png" target="_blank" rel="noopener noreferrer" aria-labelledby="feat-models-figure-caption">
+            <img src="assets/handbook/business-model.png" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          </a>
+          <figcaption id="feat-models-figure-caption">
+            <span data-i18n="feat-models-figure-caption">业务模型编辑器：配置字段、类型、校验与对象关系</span>
+            <a data-i18n="feat-models-figure-open" href="assets/handbook/business-model.png" target="_blank" rel="noopener noreferrer">查看完整界面</a>
+          </figcaption>
+        </figure>
+        <div class="ouro-detail-grid">
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-models-card-0-title">字段与关系</h3>
+            <p data-i18n="feat-models-card-0-body">配置字段类型、必填和校验，关联订单与明细、客户与联系人；使用数据字典统一状态和分类，专用字段可通过类型扩展。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-models-card-1-title">标准页面与接口</h3>
+            <p data-i18n="feat-models-card-1-body">按视图配置投影列表、新建、编辑和详情页面；模型定义关联的数据结构与 WebAPI 使用各自的运行契约。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-models-card-2-title">业务动作与事实</h3>
+            <p data-i18n="feat-models-card-2-body">把提交订单、审核、取消等操作定义为动作，绑定逻辑流或后端实现；用事件记录审核通过等事实，供后续订阅处理。</p>
+          </article>
+        </div>
+        <a data-i18n="feat-models-doc" class="ouro-detail-link" href="/dev-docs/docs/guide/tutorial/business-model/develop-business-model/">查看业务模型建模步骤 →</a>
       </section>
+      <section class="ouro-detail-section" id="feat-pages" aria-labelledby="feat-pages-title">
+        <header class="ouro-detail-heading">
+          <span class="ouro-detail-number" aria-hidden="true">02</span>
+          <div>
+            <h2 data-i18n="feat-pages-title" id="feat-pages-title">从标准表单，到专用业务工作台</h2>
+            <p data-i18n="feat-pages-intro">简单页面通过配置完成，需要调整结构时编辑 UI Schema，复杂交互再使用组件或独立页面扩展。</p>
+          </div>
+        </header>
+        <figure class="ouro-detail-figure ouro-product-shot" aria-labelledby="feat-pages-figure-caption">
+          <a class="ouro-figure-image" href="assets/handbook/page-designer.png" target="_blank" rel="noopener noreferrer" aria-labelledby="feat-pages-figure-caption">
+            <img src="assets/handbook/page-designer.png" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          </a>
+          <figcaption id="feat-pages-figure-caption">
+            <span data-i18n="feat-pages-figure-caption">UI Schema 可视化编辑器：组合页面组件、布局与交互</span>
+            <a data-i18n="feat-pages-figure-open" href="assets/handbook/page-designer.png" target="_blank" rel="noopener noreferrer">查看完整界面</a>
+          </figcaption>
+        </figure>
+        <div class="ouro-detail-grid">
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-pages-card-0-title">列表、表单与详情</h3>
+            <p data-i18n="feat-pages-card-0-body">标准页面承接查询和录入，UI Schema 调整布局、组件、数据接口与动作；PrismUI 将声明式组件树渲染为业务界面。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-pages-card-1-title">轻量采集与附件</h3>
+            <p data-i18n="feat-pages-card-1-body">问卷、报名和临时台账可使用动态表单，部署后支持筛选与 Excel 导入导出；附件和文档能力组织上传文件与共享资料。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-pages-card-2-title">看板与专用交互</h3>
+            <p data-i18n="feat-pages-card-2-body">数据集、图表和仪表板呈现业务指标，Widget 组合工作台栏目；复杂调度、画布等交互通过组件或微前端接入同一应用。</p>
+          </article>
+        </div>
+        <a data-i18n="feat-pages-doc" class="ouro-detail-link" href="/dev-docs/docs/low-code/page-delivery-with-dynamic-forms-and-ui-schema">选择适合的页面实现方式 →</a>
+      </section>
+      <section class="ouro-detail-section" id="feat-flows" aria-labelledby="feat-flows-title">
+        <header class="ouro-detail-heading">
+          <span class="ouro-detail-number" aria-hidden="true">03</span>
+          <div>
+            <h2 data-i18n="feat-flows-title" id="feat-flows-title">逻辑流：编排机器执行的业务步骤</h2>
+            <p data-i18n="feat-flows-intro">用节点与连线组织数据读取、校验、计算和接口调用，按条件分支完成一次自动处理。适用于保存前校验、金额计算、数据转换和系统同步。</p>
+          </div>
+        </header>
+        <figure class="ouro-detail-figure ouro-product-shot" aria-labelledby="feat-flows-figure-caption">
+          <a class="ouro-figure-image" href="assets/handbook/logicflow-editor.png" target="_blank" rel="noopener noreferrer" aria-labelledby="feat-flows-figure-caption">
+            <img src="assets/handbook/logicflow-editor.png" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          </a>
+          <figcaption id="feat-flows-figure-caption">
+            <span data-i18n="feat-flows-figure-caption">逻辑流编辑器：编排节点、连线、输入输出与业务处理</span>
+            <a data-i18n="feat-flows-figure-open" href="assets/handbook/logicflow-editor.png" target="_blank" rel="noopener noreferrer">查看完整界面</a>
+          </figcaption>
+        </figure>
+        <div class="ouro-detail-grid">
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-flows-card-0-title">节点与条件分支</h3>
+            <p data-i18n="feat-flows-card-0-body">连接数据操作、转换和接口调用节点，配置输入输出映射与分支条件；例如校验订单、计算金额，再保存处理结果。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-flows-card-1-title">表达式、脚本与扩展</h3>
+            <p data-i18n="feat-flows-card-1-body">表达式处理默认值和短计算，脚本完成局部计算与分支；需要专用算法或协议时，注册自定义节点或调用代码实现。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-flows-card-2-title">调用与调试</h3>
+            <p data-i18n="feat-flows-card-2-body">逻辑流可作为业务动作或 WebAPI 的实现，也可由计划任务或消息消费者调用。通过调试会话检查节点输入输出，定位失败步骤。</p>
+          </article>
+        </div>
+        <a data-i18n="feat-flows-doc" class="ouro-detail-link" href="/dev-docs/docs/low-code/workflow-rules-and-automation">了解规则、脚本与逻辑流 →</a>
+      </section>
+      <section class="ouro-detail-section" id="feat-approval" aria-labelledby="feat-approval-title">
+        <header class="ouro-detail-heading">
+          <span class="ouro-detail-number" aria-hidden="true">04</span>
+          <div>
+            <h2 data-i18n="feat-approval-title" id="feat-approval-title">审批流：组织人员参与的申请与流转</h2>
+            <p data-i18n="feat-approval-intro">将流程绑定到业务模型，以该模型的表单和数据作为申请对象，明确由谁处理、可以执行哪些审批动作，以及满足什么条件后进入下一步。</p>
+          </div>
+        </header>
+        <figure class="ouro-detail-figure ouro-product-shot" aria-labelledby="feat-approval-figure-caption">
+          <a class="ouro-figure-image" href="assets/handbook/approval-editor.jpg" target="_blank" rel="noopener noreferrer" aria-labelledby="feat-approval-figure-caption">
+            <img src="assets/handbook/approval-editor.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          </a>
+          <figcaption id="feat-approval-figure-caption">
+            <span data-i18n="feat-approval-figure-caption">审批流编辑器：配置审批节点、处理人员与流转路径</span>
+            <a data-i18n="feat-approval-figure-open" href="assets/handbook/approval-editor.jpg" target="_blank" rel="noopener noreferrer">查看完整界面</a>
+          </figcaption>
+        </figure>
+        <div class="ouro-detail-grid">
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-approval-card-0-title">人员与审批方式</h3>
+            <p data-i18n="feat-approval-card-0-body">按角色、岗位、发起人、表单字段或用户自选确定处理人员；配置单签或会签，会签可设置串行、并行与通过比例。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-approval-card-1-title">节点、分支与审批动作</h3>
+            <p data-i18n="feat-approval-card-1-body">组织审批、办理、抄送和子流程节点，用条件分支决定流转路径；按业务需要启用退回、拒绝、转办或加签等动作。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-approval-card-2-title">表单权限与处理记录</h3>
+            <p data-i18n="feat-approval-card-2-body">为不同节点配置字段可见、可写和必填规则；运行时查看当前节点、候选人员与处理记录，在待办生成或审批结束时按需发送通知。</p>
+          </article>
+        </div>
+        <a data-i18n="feat-approval-doc" class="ouro-detail-link" href="/dev-docs/docs/low-code/development-platform-menus/approval-workflow">查看审批流配置指南 →</a>
+      </section>
+      <section class="ouro-detail-section" id="feat-integration" aria-labelledby="feat-integration-title">
+        <header class="ouro-detail-heading">
+          <span class="ouro-detail-number" aria-hidden="true">05</span>
+          <div>
+            <h2 data-i18n="feat-integration-title" id="feat-integration-title">对接已有系统，处理异步与周期工作</h2>
+            <p data-i18n="feat-integration-intro">把数据库、HTTP 接口、消息和调度接入业务处理链路。同步 ERP、定期汇总或后台处理，都有对应的配置与扩展入口。</p>
+          </div>
+        </header>
+        <div class="ouro-detail-grid ouro-detail-grid-pairs">
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-integration-card-0-title">数据源</h3>
+            <p data-i18n="feat-integration-card-0-body">为应用定义稳定的数据源名称，按环境绑定到平台数据源。数据集、逻辑流等引用应用数据源名称，连接地址与凭据由对应环境统一维护。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-integration-external-title">外部接口</h3>
+            <p data-i18n="feat-integration-external-body">配置外部 HTTP / RPC 服务的认证、请求方法、地址与参数映射，设置超时和重试，再由逻辑流或代码调用。特殊协议或认证方式通过后端扩展接入。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-integration-card-1-title">计划任务</h3>
+            <p data-i18n="feat-integration-card-1-body">使用 Cron 表达式设置执行时间，选择逻辑流并配置固定输入，完成每日汇总、周期同步或定时清理。指定延迟后执行一次的处理，由业务逻辑另行创建延迟任务。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-integration-message-title">消息队列</h3>
+            <p data-i18n="feat-integration-message-body">配置生产者或消费者绑定，指定主题、分组与路由参数。生产者发送业务消息，消费者接收载荷后交给逻辑流处理；失败、重试和重复投递按中间件与业务规则验证。</p>
+          </article>
+        </div>
+        <a data-i18n="feat-integration-doc" class="ouro-detail-link" href="/dev-docs/docs/fusion-development/integration-automation-and-realtime">查看集成与自动化指南 →</a>
+      </section>
+      <section class="ouro-detail-section" id="feat-feedback" aria-labelledby="feat-feedback-title">
+        <header class="ouro-detail-heading">
+          <span class="ouro-detail-number" aria-hidden="true">06</span>
+          <div>
+            <h2 data-i18n="feat-feedback-title" id="feat-feedback-title">把待办、结果与状态变化传达给用户</h2>
+            <p data-i18n="feat-feedback-intro">业务处理完成或需要人员参与时，通过通知触达相关人员；在线页面需要及时展示变化时，通过实时通道接收状态并更新界面。</p>
+          </div>
+        </header>
+        <div class="ouro-detail-grid ouro-detail-grid-pairs">
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-feedback-notification-title">消息通知</h3>
+            <p data-i18n="feat-feedback-notification-body">配置通知渠道、标题、内容模板与接收人来源，在待办生成、审批结束或异常发生时发送。模板变量填入业务信息，发送记录用于查询结果和排查失败。</p>
+            <a data-i18n="feat-feedback-notification-doc" class="ouro-detail-link" href="/dev-docs/docs/guide/tutorial/notification/">查看通知配置 →</a>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-feedback-realtime-title">实时状态推送</h3>
+            <p data-i18n="feat-feedback-realtime-body">通过 WebSocket / STOMP 将业务状态变化推送到授权的用户或会话。页面按事件更新展示或重新查询结果；断线重连后重新获取服务端状态。</p>
+            <a data-i18n="feat-feedback-realtime-doc" class="ouro-detail-link" href="/dev-docs/docs/fusion-development/integration-automation-and-realtime#使用-websocket-推送状态">了解实时通信 →</a>
+          </article>
+        </div>
+      </section>
+      <section class="ouro-detail-section" id="feat-permissions" aria-labelledby="feat-permissions-title">
+        <header class="ouro-detail-heading">
+          <span class="ouro-detail-number" aria-hidden="true">07</span>
+          <div>
+            <h2 data-i18n="feat-permissions-title" id="feat-permissions-title">从入口到字段，配置业务访问范围</h2>
+            <p data-i18n="feat-permissions-intro">角色、岗位和组织定义人员职责，权限项约束菜单、页面和接口，数据规则继续约束能看到哪些记录、哪些字段。</p>
+          </div>
+        </header>
+        <div class="ouro-detail-grid">
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-permissions-card-0-title">角色权限</h3>
+            <p data-i18n="feat-permissions-card-0-body">定义应用内置角色，为用户分配角色，按职责授予菜单、页面、接口与业务操作权限。例如销售可以提交订单，主管可以审核订单。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-permissions-organization-title">组织与岗位</h3>
+            <p data-i18n="feat-permissions-organization-body">建立公司、部门、岗位与员工关系，表达人员归属和业务职责。审批人员与通知接收人可以依据相应组织关系解析。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-permissions-card-1-title">行级数据权限</h3>
+            <p data-i18n="feat-permissions-card-1-body">用筛选条件限定角色可访问的业务记录。例如销售仅查看自己的订单，部门负责人查看本部门的数据，规则在后端数据访问时执行。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-permissions-fields-title">字段访问权限</h3>
+            <p data-i18n="feat-permissions-fields-body">按角色配置字段访问范围，控制记录中哪些信息可被读取或写入。例如向财务开放结算字段，向其他角色限制敏感金额和个人信息。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-permissions-card-2-title">身份认证</h3>
+            <p data-i18n="feat-permissions-card-2-body">通过对应适配接入 OIDC、CAS、企业目录或协作平台登录，确认访问者身份。登录后的页面、接口和数据访问继续由角色与权限规则约束。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-permissions-audit-title">业务审计</h3>
+            <p data-i18n="feat-permissions-audit-body">为关键 HTTP 业务操作配置日志模板，记录操作人、时间、业务对象、摘要与结果，并对敏感字段脱敏。按业务键回溯操作，完整调用链通过团队的链路追踪系统分析。</p>
+          </article>
+        </div>
+        <a data-i18n="feat-permissions-doc" class="ouro-detail-link" href="/dev-docs/docs/low-code/organization-permissions-configuration-and-notification">了解组织、权限与配置 →</a>
+      </section>
+      <section class="ouro-detail-section" id="feat-development" aria-labelledby="feat-development-title">
+        <header class="ouro-detail-heading">
+          <span class="ouro-detail-number" aria-hidden="true">08</span>
+          <div>
+            <h2 data-i18n="feat-development-title" id="feat-development-title">模型、代码与 AI，在同一应用中协作</h2>
+            <p data-i18n="feat-development-intro">可视化编辑保存模型定义，代码扩展补充专用实现，AI 根据模型与文档辅助开发。应用工作区、测试实例和版本管理连接这些成果。</p>
+          </div>
+        </header>
+        <figure class="ouro-detail-figure ouro-product-shot" aria-labelledby="feat-development-figure-caption">
+          <a class="ouro-figure-image" href="assets/handbook/app-workspace.png" target="_blank" rel="noopener noreferrer" aria-labelledby="feat-development-figure-caption">
+            <img src="assets/handbook/app-workspace.png" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+          </a>
+          <figcaption id="feat-development-figure-caption">
+            <span data-i18n="feat-development-figure-caption">应用开发工作区：模型关系、开发入口、运行工具栏与最近修改</span>
+            <a data-i18n="feat-development-figure-open" href="assets/handbook/app-workspace.png" target="_blank" rel="noopener noreferrer">查看完整界面</a>
+          </figcaption>
+        </figure>
+        <div class="ouro-detail-grid">
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-development-card-0-title">沿用工程工具</h3>
+            <p data-i18n="feat-development-card-0-body">通过 IDEA / VS Code 插件编辑元数据并绑定项目，用 Java / Spring Boot 实现后端扩展，用组件和微前端扩展界面；本地 IDE 可与平台测试实例联调。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-development-card-1-title">让 AI 读懂任务</h3>
+            <p data-i18n="feat-development-card-1-body">向 AI 提供业务目标、模型、Schema、手册与 Skills，辅助分析、修改和校验；生成的模型与代码进入原有项目，由开发者评审和验收。</p>
+          </article>
+          <article class="ouro-detail-card">
+            <h3 data-i18n="feat-development-card-2-title">运行验证与版本交付</h3>
+            <p data-i18n="feat-development-card-2-body">创建或刷新测试实例，查看日志并验证正常、异常和无权限场景；版本记录模型与代码的配套组合，生产部署和数据变更按团队流程管理。</p>
+          </article>
+        </div>
+        <a data-i18n="feat-development-doc" class="ouro-detail-link" href="/dev-docs/docs/fusion-development/">阅读融合开发与联调指南 →</a>
+      </section>
+      <section class="ouro-detail-section" id="feat-example" aria-labelledby="feat-example-title">
+        <header class="ouro-detail-heading">
+          <span class="ouro-detail-number" aria-hidden="true">09</span>
+          <div>
+            <h2 data-i18n="feat-example-title" id="feat-example-title">把能力串起来：一个订单审核应用</h2>
+            <p data-i18n="feat-example-intro">以下是组合示例：销售录入订单，主管审核，审核通过后同步 ERP，调度人员在专用工作台安排交付。</p>
+          </div>
+        </header>
+        <ol class="ouro-feature-steps">
+          <li>
+            <span aria-hidden="true">1</span>
+            <div>
+              <h3 data-i18n="feat-example-0-title">定义订单与明细</h3>
+              <p data-i18n="feat-example-0-body">确定字段、客户关系、状态与可执行动作，配置标准列表、表单和详情。</p>
+            </div>
+          </li>
+          <li>
+            <span aria-hidden="true">2</span>
+            <div>
+              <h3 data-i18n="feat-example-1-title">接入人工审核</h3>
+              <p data-i18n="feat-example-1-body">用审批流指定审核人员和通过、驳回路径，权限控制谁可以提交与审核。</p>
+            </div>
+          </li>
+          <li>
+            <span aria-hidden="true">3</span>
+            <div>
+              <h3 data-i18n="feat-example-2-title">同步 ERP</h3>
+              <p data-i18n="feat-example-2-body">审核通过后由逻辑流调用外部接口；耗时同步可通过消息队列异步处理，保存同步结果与失败信息。</p>
+            </div>
+          </li>
+          <li>
+            <span aria-hidden="true">4</span>
+            <div>
+              <h3 data-i18n="feat-example-3-title">补充调度工作台</h3>
+              <p data-i18n="feat-example-3-body">为复杂调度编写组件或微前端，继续调用同一应用的业务接口，实时展示处理状态。</p>
+            </div>
+          </li>
+          <li>
+            <span aria-hidden="true">5</span>
+            <div>
+              <h3 data-i18n="feat-example-4-title">验证并留档</h3>
+              <p data-i18n="feat-example-4-body">检查正常、驳回、同步失败和无权限场景，保存配套版本，再按团队部署流程交付。</p>
+            </div>
+          </li>
+        </ol>
+        <a data-i18n="feat-example-doc" class="ouro-detail-link" href="/dev-docs/docs/getting-started/">从第一个应用开始 →</a>
+      </section>
+      <div class="ouro-detail-next">
+        <div data-i18n="feat-next-copy">了解模型、执行引擎与运行基座如何支撑这些功能。</div>
+        <a data-i18n="feat-next" class="ouro-btn-primary" href="architecture.html">查看平台架构 →</a>
+      </div>
     </div>
   </main>
 </body>

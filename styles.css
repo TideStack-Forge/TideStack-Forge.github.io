@@ -1885,6 +1885,270 @@ body {
       background: var(--ouro-surface);
     }
 
+
+    /* Architecture and feature detail pages share the existing site tokens. */
+    .ouro-detail-page {
+      padding: calc(var(--ouro-hero-top) + var(--ouro-space-8)) 0 var(--ouro-space-8);
+      color: var(--ouro-ink);
+      background: var(--ouro-background);
+    }
+
+    .ouro-detail-hero {
+      max-width: 900px;
+      margin-bottom: var(--ouro-space-7);
+    }
+
+    .ouro-detail-eyebrow {
+      margin-bottom: var(--ouro-space-5);
+      color: var(--ouro-primary);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+    }
+
+    .ouro-detail-hero .ouro-h1 {
+      margin-bottom: var(--ouro-space-5);
+      text-wrap: balance;
+    }
+
+    .ouro-detail-hero .ouro-body-lg {
+      color: var(--ouro-ink-2);
+      text-wrap: pretty;
+    }
+
+    .ouro-detail-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--ouro-space-3) var(--ouro-space-5);
+      padding: var(--ouro-space-5) 0;
+      border-top: 1px solid var(--ouro-line);
+      border-bottom: 1px solid var(--ouro-line);
+    }
+
+    .ouro-detail-nav a {
+      color: var(--ouro-ink-2);
+      font-size: 14px;
+    }
+
+    .ouro-detail-nav a:hover,
+    .ouro-detail-link:hover {
+      color: var(--ouro-primary);
+    }
+
+    .ouro-detail-section {
+      padding-top: var(--ouro-space-8);
+      scroll-margin-top: calc(var(--ouro-hero-top) + var(--ouro-space-5));
+    }
+
+    .ouro-detail-heading {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--ouro-space-5);
+      max-width: 960px;
+      margin-bottom: var(--ouro-space-6);
+    }
+
+    .ouro-detail-number {
+      flex: 0 0 auto;
+      padding-top: 3px;
+      color: var(--ouro-primary);
+      font-family: var(--ouro-font-mono);
+      font-size: 14px;
+    }
+
+    .ouro-detail-heading h2 {
+      margin-bottom: var(--ouro-space-4);
+      font-size: clamp(24px, 2.6vw, 32px);
+      line-height: 1.35;
+      font-weight: 600;
+      text-wrap: balance;
+    }
+
+    .ouro-detail-heading p,
+    .ouro-detail-card p,
+    .ouro-feature-steps p {
+      color: var(--ouro-ink-2);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .ouro-detail-figure {
+      overflow: hidden;
+      margin: 0 0 var(--ouro-space-6);
+      border: 1px solid var(--ouro-line);
+      border-radius: 20px;
+      background: var(--ouro-surface);
+    }
+
+    .ouro-figure-image {
+      display: block;
+      padding: var(--ouro-space-5);
+      background: #fff;
+      cursor: zoom-in;
+    }
+
+    .ouro-figure-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .ouro-product-shot .ouro-figure-image {
+      padding: 0;
+    }
+
+    .ouro-detail-figure figcaption {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--ouro-space-5);
+      padding: var(--ouro-space-4) var(--ouro-space-5);
+      border-top: 1px solid var(--ouro-line);
+      color: var(--ouro-ink-2);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .ouro-detail-figure figcaption a {
+      flex-shrink: 0;
+      color: var(--ouro-primary);
+    }
+
+    .ouro-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--ouro-space-5);
+    }
+
+    .ouro-detail-grid-pairs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ouro-detail-card {
+      min-width: 0;
+      padding: var(--ouro-space-5);
+      border: 1px solid var(--ouro-line);
+      border-radius: 20px;
+      background: var(--ouro-surface);
+    }
+
+    .ouro-detail-card h3,
+    .ouro-feature-steps h3 {
+      margin-bottom: var(--ouro-space-3);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .ouro-detail-link {
+      display: inline-block;
+      margin-top: var(--ouro-space-5);
+      color: var(--ouro-primary);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .ouro-technical-diagrams {
+      display: grid;
+      gap: var(--ouro-space-4);
+      margin-top: var(--ouro-space-6);
+    }
+
+    .ouro-technical-diagrams details {
+      border: 1px solid var(--ouro-line);
+      border-radius: var(--ouro-radius-large);
+      background: var(--ouro-surface);
+    }
+
+    .ouro-technical-diagrams summary {
+      padding: var(--ouro-space-5);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .ouro-technical-diagrams .ouro-detail-figure {
+      margin: 0;
+      border: 0;
+      border-top: 1px solid var(--ouro-line);
+      border-radius: 0 0 var(--ouro-radius-large) var(--ouro-radius-large);
+    }
+
+    .ouro-feature-steps {
+      display: grid;
+      gap: var(--ouro-space-5);
+      list-style: none;
+      padding: 0;
+    }
+
+    .ouro-feature-steps li {
+      display: flex;
+      gap: var(--ouro-space-5);
+      padding-bottom: var(--ouro-space-5);
+      border-bottom: 1px solid var(--ouro-line);
+    }
+
+    .ouro-feature-steps li > span {
+      display: grid;
+      place-items: center;
+      flex: 0 0 36px;
+      height: 36px;
+      border: 1px solid var(--ouro-line);
+      border-radius: 50%;
+      color: var(--ouro-primary);
+      background: var(--ouro-surface);
+      font-family: var(--ouro-font-mono);
+    }
+
+    .ouro-detail-next {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--ouro-space-5);
+      margin-top: var(--ouro-space-8);
+      padding-top: var(--ouro-space-6);
+      border-top: 1px solid var(--ouro-line);
+      color: var(--ouro-ink-2);
+    }
+
+    .ouro-detail-page a:focus-visible,
+    .ouro-detail-page summary:focus-visible {
+      outline: 2px solid var(--ouro-primary);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .ouro-detail-grid,
+      .ouro-detail-grid-pairs {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .ouro-detail-page {
+        padding-top: calc(var(--ouro-hero-top) + var(--ouro-space-7));
+      }
+
+      .ouro-detail-section {
+        padding-top: var(--ouro-space-7);
+      }
+
+      .ouro-detail-heading {
+        gap: var(--ouro-space-3);
+      }
+
+      .ouro-figure-image {
+        padding: var(--ouro-space-2);
+      }
+
+      .ouro-detail-figure figcaption,
+      .ouro-detail-next {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: var(--ouro-space-3);
+      }
+    }
+
     .ouro-section-inner {
       position: relative;
       z-index: 1;
