@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;
   /* Brand scale built from the Ouroboros logo */
   --ouro-cyan-400: #4ce4f5;
   --ouro-cyan-500: #00d2e9;
@@ -88,6 +89,7 @@
 
 .dark,
 [data-theme="dark"] {
+  color-scheme: dark;
   --ouro-background: #06080c;
   --ouro-foreground: var(--ouro-neutral-50);
   --ouro-card: #0d1117;
@@ -1983,7 +1985,7 @@ body {
     .ouro-figure-image {
       display: block;
       padding: var(--ouro-space-5);
-      background: #fff;
+      background: var(--ouro-background);
       cursor: zoom-in;
     }
 
